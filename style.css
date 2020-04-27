@@ -11,7 +11,7 @@ body{
   border-radius: 50%;
   text-align: center;
 }
-.main {
+.game-container {
   display: flex;
   flex-wrap: wrap;
   width: 75%;
