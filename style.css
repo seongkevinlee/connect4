@@ -56,3 +56,15 @@ body{
   background-color: red;
   text-align: center;
 }
+
+.start-button {
+  top: 50%;
+  left: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 7px;
+  height: 100px;
+  width: 230px;
+  font-size: 2rem;
+}
