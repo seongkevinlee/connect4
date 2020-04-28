@@ -1,12 +1,17 @@
-
+* {
+  box-sizing: border-box;
+}
 body{
   font-family: 'Marvel', sans-serif;
   height: 95vh;
   width: 95vh;
   margin:0 23%;
   font-size: 2vmax;
+  background-image: url(images/background.jpg);
+  background-size: 90%;
+  background-position:right top;
+  background-repeat: none;
 }
-
 .row > div {
   background-color: white;
   height: 100%;
@@ -25,7 +30,6 @@ body{
 .control-panel > div{
   width: 3vmax;
   height: 3vmax;
-  background-color: aliceblue;
   border: solid 1px;
   border-radius: 7px;
 }
@@ -87,31 +91,30 @@ background-image: url(images/pause.png);
 }
 
 .header {
-  background-color: orange;
   height: 12.3%;
   width: 100%;
   display:flex;
   justify-content: space-around;
+  border: 1px solid;
 }
 
 .header > div{
-  background-color: red;
   flex-basis: 30%;
   height: 100%;
   margin: 0 1.35%;
 }
 
 .left, .right {
-  width: 12.3%;
+  width: 12.5%;
   height: 75%;
-  background-color: yellow;
+  border: 1px solid;
 }
 
 .footer {
   height: 12.3%;
   width: 100%;
-  background-color: red;
   text-align: center;
+  border: 1px solid;
 }
 
 .start-modal {
