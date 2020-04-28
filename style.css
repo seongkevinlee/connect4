@@ -160,6 +160,22 @@ body{
   margin: auto;
 }
 
+.token{
+  height: 100%;
+  width: 14%;
+  margin: 2px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.p1.token{
+  background-color: firebrick;
+}
+
+.p2.token{
+  background-color: goldenrod;
+}
+
 .hidden {
   visibility: hidden;
 }
