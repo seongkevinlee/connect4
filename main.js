@@ -9,9 +9,12 @@ var pauseGame = document.querySelector(".pause-game");
 var currentPlayer = false;
 var rowLength = 6;
 var colLength = 7;
+var gamePieces = [];
+
 // Archives the token objects that have been placed on the board
 // Token object properties: IDs, colors,
 var tokensPlaced = [];
+
 // Stats
 var rounds = 0;
 var gamesPlayed = 0;
@@ -25,6 +28,8 @@ restartGame.addEventListener("click", restartGame);
 pauseGame.addEventListener("click", pauseGame);
 
 /*-------- Function Calls --------*/
+createSymbolicTokens();
+
 
 
 /*-------- Function Declarations --------*/
@@ -50,7 +55,21 @@ function addToken(event) {
         }
     }
 }
+
+function createSymbolicTokens(){
+
+  for (let col = 0; col < colLength; col++) {
+    gamePieces.push([]);
+  }
+
+  // creates a game-piece of 0 to indicate the spot is empty
+  for (let col = 0; col < colLength; col++){
+    for (let row = 0; row < rowLength; row++){
+      gamePieces[col].push(0);
+    }
+  }
 }
+
 
 // function toggleSound(){
 
