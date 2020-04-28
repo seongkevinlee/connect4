@@ -1,5 +1,6 @@
 
 body{
+  font-family: 'Marvel', sans-serif;
   height: 95vh;
   width: 95vh;
   margin:0 23%;
@@ -114,6 +115,9 @@ background-image: url(images/pause.png);
 }
 
 .start-modal {
+  background-image:  linear-gradient(to right, rgba(255, 255, 255, 0.6), rgb(255, 255, 255, 0.6)), url(./images/logo-start.png);
+  background-position: center;
+  background-size: cover;
   width: 50%;
   height: 45%;
   background-color: white;
@@ -126,23 +130,34 @@ background-image: url(images/pause.png);
   position: fixed;
   transform: translate(-50%, -50%);
   border-radius: 7px;
+  font-family: 'Marvel', sans-serif;
 }
 .start-modal > h4 {
+  font-size: 2rem;
   margin-block-start: 0rem;
   margin-block-end: 2rem;
 }
 .name-inputs {
+  /* -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black; */
+  color: black;
+  font-size: 2rem;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
 }
+.name-inputs > input {
+  opacity: .8;
+}
 .start-button {
+  font-family: 'Marvel', sans-serif;
+  background-color: white;
   margin-top: 2rem;
   text-align: center;
   border-radius: 7px;
   height: 15%;
   width: 25%;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 
 .stats{
