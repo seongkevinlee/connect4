@@ -1,0 +1,22 @@
+/* GAME BOARD GRID LAYOUT */
+.col-1 {
+  width: 14%;
+}
+.col-2 {
+  width: 28%;
+}
+.col-3 {
+  width: 42%;
+}
+.col-4 {
+  width: 56%;
+}
+.col-5 {
+  width: 70%;
+}
+.col-6 {
+  width: 84%;
+}
+.col-7 {
+  width: 98%;
+}
