@@ -13,6 +13,37 @@ body{
   border-radius: 50%;
   text-align: center;
 }
+.control-panel{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.control-panel > div{
+  width: 3vmax;
+  height: 3vmax;
+  background-color: aliceblue;
+  border: solid 1px;
+  border-radius: 7px;
+}
+.toggle-sound,
+.restart-game,
+.pause-game{
+  border-radius: 7px;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+.toggle-sound{
+  background-image: url(images/sound.png);
+}
+.restart-game{
+  background-image: url(images/restart.png);
+}
+
+.pause-game{
+background-image: url(images/pause.png);
+}
 .game-container {
   display: flex;
   flex-wrap: wrap;
@@ -37,7 +68,6 @@ body{
   background-color: red;
   flex-basis: 30%;
   height: 100%;
-  display: inline-block;
   margin: 0 1.35%;
 
 }
@@ -51,7 +81,7 @@ body{
 }
 .left, .right {
   width: 12.3%;
-  height: 75%%;
+  height: 75%;
   background-color: yellow;
 }
 .footer {
