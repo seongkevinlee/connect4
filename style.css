@@ -56,3 +56,24 @@ body{
   background-color: red;
   text-align: center;
 }
+
+.stats{
+  background-color: palevioletred;
+  border: rebeccapurple 1px solid;
+  border-radius: 20%;
+  margin: auto;
+}
+
+.info{
+  background-color: greenyellow;
+  border: rebeccapurple 1px solid;
+  border-radius: 20%;
+  margin: auto;
+}
+
+.timer{
+  background-color: firebrick;
+  border: rebeccapurple 1px solid;
+  border-radius: 20%;
+  margin: auto;
+}
