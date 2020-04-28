@@ -4,8 +4,8 @@
 body{
   font-family: 'Marvel', sans-serif;
   height: 95vh;
-  width: 95vh;
-  margin:0 23%;
+  width: 1250px;
+  margin:auto;
   font-size: 2vmax;
   background-image: url(images/background.jpg);
   background-size: 90%;
@@ -13,7 +13,7 @@ body{
   background-repeat: none;
 }
 .row > div {
-  background-color: white;
+  /* background-color: white; */
   height: 100%;
   width: 14%;
   margin: 2px;
@@ -55,18 +55,23 @@ background-image: url(images/pause.png);
 .main-body{
   display:flex;
   flex-Wrap: wrap;
+  justify-content: space-between;
   height:60%;
-  width:70%;
+  width:72%;
   min-height: 48vmax;
   min-width: 56vmax;
+  margin: auto;
 }
 
 .game-container {
+  background-image: url(./images/gameboardoverlay.png);
+  background-position: left;
+  background-size: cover;
   display: flex;
   flex-wrap: wrap;
-  width: 75%;
+  width: 73%;
   height: 75%;
-  background-color:blue;
+  /* background-color:blue; */
 }
 
 .win-model{
@@ -210,6 +215,8 @@ background-image: url(images/pause.png);
 }
 
 .game-piece{
+  display: flex;
+  justify-content: center;
   height: 100%;
   width: 14%;
   margin: 2px;
