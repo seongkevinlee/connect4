@@ -1,7 +1,7 @@
-var gameContainer = document.getElementById("game-container");
-var toggleSound = document.getElementById("toggle-sound");
-var restartGame = document.getElementById("restart-game");
-var pauseGame = document.getElementById("pause-game");
+var gameContainer = document.querySelector(".game-container");
+var toggleSound = document.querySelector(".toggle-sound");
+var restartGame = document.querySelector(".restart-game");
+var pauseGame = document.querySelector(".pause-game");
 
 gameContainer.addEventListener("click", addToken);
 toggleSound.addEventListener("click", toggleSound);
