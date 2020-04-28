@@ -11,6 +11,16 @@ var rowLength = 6;
 var colLength = 7;
 var gamePieces = [];
 
+//GAME BOARD MATRIX
+var gameBoardArray = [
+  [0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0],
+];
+
 // Archives the token objects that have been placed on the board
 // Token object properties: IDs, colors,
 var tokensPlaced = [];
@@ -28,7 +38,7 @@ restartGame.addEventListener("click", restartGame);
 pauseGame.addEventListener("click", pauseGame);
 
 /*-------- Function Calls --------*/
-createSymbolicTokens();
+// createSymbolicTokens();
 
 
 
