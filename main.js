@@ -6,7 +6,7 @@ var restartGame = document.querySelector(".restart-game");
 var pauseGame = document.querySelector(".pause-game");
 
 /*-------- Global Variables --------*/
-var currentPlayer = false;
+var currentPlayer = 1;
 var rowLength = 6;
 var colLength = 7;
 var gamePieces = [];
@@ -78,41 +78,43 @@ function checkWin(lastPlace) {
     var currentCol = Math.floor(lastPlace.id) /10;
     var numInARow = 0;
     console.log('current Row:', currentRow)
-
-    //horrizontal check
-    //if Player1's turn
-    if (!currentPlayer) {
-        for (let colIndex = 0; colIndex < colLength; colIndex++) {
-            var divCheck = document.getElementById(`${colIndex}${currentRow}`)
-            if (divCheck.classList.contains('p1')) {
-                numInARow++
-                if (numInARow >= 4) {
-                    console.log('We have a winner');  //PlaceHolder
-                }
-            } else {
-                numInARow = 0;
-            }
-        }
-    } else {
-        //Player2's turn
-        for (let colIndex = 0; colIndex < colLength; colIndex++) {
-            var divCheck = document.getElementById(`${colIndex}${currentRow}`)
-            if (divCheck.classList.contains('p1')) {
-                numInARow++
-                if (numInARow >= 4) {
-                    console.log('We have a winner');  //PlaceHolder
-                }
-            } else {
-                numInARow = 0;
-            }
-        }
-    }
+  checkHorizontal(currentRow);
     //END HORIZONTAL
-
+  checkVertical(currentCol);
     //Vertical Check
 }
 
+// expect to get an array
+function checkVertical(lastCol){
+  let piecesCounter=0;
+  for (let row = 0; row < rowLength-1; row++){
+    if (gameBoardArray[lastCol][row]===currentPlayer){
+      piecesCounter++;
+    }
+  }
 
+  if(piecesCounter===4){
+    return true;
+  }
+
+  return false;
+}
+
+// expect to get an array
+function checkHorizontal(lastRow) {
+  let piecesCounter = 0;
+  for (let col = 0; col < colLength-1; col++) {
+    if (gameBoardArray[col][lastRow] === currentPlayer) {
+      piecesCounter++;
+    }
+  }
+
+  if (piecesCounter === 4) {
+    return true;
+  }
+
+  return false;
+}
 
 function createSymbolicTokens(){
 
