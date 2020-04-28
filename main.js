@@ -10,7 +10,6 @@ restartGame.addEventListener("click", restartGame);
 pauseGame.addEventListener("click", pauseGame);
 
 function addToken(){
-
 }
 
 function toggleSound(){
