@@ -5,6 +5,7 @@ body{
   margin:0 23%;
   font-size: 2vmax;
 }
+
 .row > div {
   background-color: white;
   height: 100%;
@@ -13,6 +14,16 @@ body{
   border-radius: 50%;
   text-align: center;
 }
+
+.main-body{
+  display:flex;
+  flex-Wrap: wrap;
+  height:60%;
+  width:70%;
+  min-height: 48vmax;
+  min-width: 56vmax;
+}
+
 .game-container {
   display: flex;
   flex-wrap: wrap;
@@ -20,6 +31,22 @@ body{
   height: 75%;
   background-color:blue;
 }
+
+.win-model{
+  background-color: white;
+  position: fixed;
+  margin: auto;
+  height: 60%;
+  width: 50%;
+  min-height: 48vmax;
+  min-width: 56vmax;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
 .row {
   display: flex;
   height: 16%;
@@ -33,27 +60,21 @@ body{
   display:flex;
   justify-content: space-around;
 }
+
 .header > div{
   background-color: red;
   flex-basis: 30%;
   height: 100%;
   display: inline-block;
   margin: 0 1.35%;
+}
 
-}
-.main-body{
-  display:flex;
-  flex-Wrap: wrap;
-  height:60%;
-  width:70%;
-  min-height: 48vmax;
-  min-width: 56vmax;
-}
 .left, .right {
   width: 12.3%;
   height: 75%%;
   background-color: yellow;
 }
+
 .footer {
   height: 12.3%;
   width: 100%;
@@ -77,6 +98,7 @@ body{
   background-color: palevioletred;
   border: rebeccapurple 1px solid;
   border-radius: 20%;
+  font-size: 1.5rem;
   margin: auto;
 }
 
@@ -90,6 +112,30 @@ body{
 .timer{
   background-color: firebrick;
   border: rebeccapurple 1px solid;
+  border-radius: 20%;
+  margin: auto;
+}
+
+.win-button{
+  width: 30%;
+  height: 20%;
+  background-color: firebrick;
+  border: rebeccapurple 1px solid;
+  border-radius: 20%;
+  font-size: 2rem;
+  color: white;
+  margin: auto;
+}
+
+.model-txt{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 20%;
+  background-color: goldenrod;
+  /* border: rebeccapurple 1px solid; */
+  font-size: 2rem;
   border-radius: 20%;
   margin: auto;
 }
