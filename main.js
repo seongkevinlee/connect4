@@ -7,6 +7,8 @@ var pauseGame = document.querySelector(".pause-game");
 
 /*-------- Global Variables --------*/
 var currentPlayer = false;
+var rowLength = 6;
+var colLength = 7;
 // Archives the token objects that have been placed on the board
 // Token object properties: IDs, colors,
 var tokensPlaced = [];
@@ -26,24 +28,44 @@ pauseGame.addEventListener("click", pauseGame);
 
 
 /*-------- Function Declarations --------*/
-function addToken(event){
+function addToken(event) {
+    console.log(event)
 
+    if (!event.target.classList.contains('game-piece')) {
+        return;
+    }
+    var currentRow = Math.floor((event.target.id) / 10);
+    // console.log(currentRow);
+    for (let rowIndex = 0; rowIndex < rowLength; rowIndex++) {
+        console.log(`${currentRow}${rowIndex}`)
+        var currentDiv = document.getElementById(`${currentRow}${rowIndex}`);
+        if (currentDiv.classList.contains('game-piece')) {
+            if (currentPlayer === false) {
+                currentDiv.className = ('p1 token');
+                return;
+            } else {
+                currentDiv.className = ('p2 token');
+                return;
+            }
+        }
+    }
+}
 }
 
-function toggleSound(){
+// function toggleSound(){
 
-}
+// }
 
-function restartGame(){
+// function restartGame(){
 
-}
+// }
 
-function pauseGame(){
+// function pauseGame(){
 
-}
+// }
 
-function lowestAvailable(){
-  var unclaimed;
+// function lowestAvailable(){
+//   var unclaimed;
 
-  return unclaimed;
-}
+//   return unclaimed;
+// }
