@@ -1,11 +1,17 @@
-
+* {
+  box-sizing: border-box;
+}
 body{
+  font-family: 'Marvel', sans-serif;
   height: 95vh;
   width: 95vh;
   margin:0 23%;
   font-size: 2vmax;
+  background-image: url(images/background.jpg);
+  background-size: 90%;
+  background-position:right top;
+  background-repeat: none;
 }
-
 .row > div {
   background-color: white;
   height: 100%;
@@ -24,7 +30,6 @@ body{
 .control-panel > div{
   width: 3vmax;
   height: 3vmax;
-  background-color: aliceblue;
   border: solid 1px;
   border-radius: 7px;
 }
@@ -86,34 +91,36 @@ background-image: url(images/pause.png);
 }
 
 .header {
-  background-color: orange;
   height: 12.3%;
   width: 100%;
   display:flex;
   justify-content: space-around;
+  border: 1px solid;
 }
 
 .header > div{
-  background-color: red;
   flex-basis: 30%;
   height: 100%;
   margin: 0 1.35%;
 }
 
 .left, .right {
-  width: 12.3%;
+  width: 12.5%;
   height: 75%;
-  background-color: yellow;
+  border: 1px solid;
 }
 
 .footer {
   height: 12.3%;
   width: 100%;
-  background-color: red;
   text-align: center;
+  border: 1px solid;
 }
 
 .start-modal {
+  background-image:  linear-gradient(to right, rgba(255, 255, 255, 0.6), rgb(255, 255, 255, 0.6)), url(./images/logo-start.png);
+  background-position: center;
+  background-size: cover;
   width: 50%;
   height: 45%;
   background-color: white;
@@ -126,23 +133,34 @@ background-image: url(images/pause.png);
   position: fixed;
   transform: translate(-50%, -50%);
   border-radius: 7px;
+  font-family: 'Marvel', sans-serif;
 }
 .start-modal > h4 {
+  font-size: 2rem;
   margin-block-start: 0rem;
   margin-block-end: 2rem;
 }
 .name-inputs {
+  /* -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black; */
+  color: black;
+  font-size: 2rem;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
 }
+.name-inputs > input {
+  opacity: .8;
+}
 .start-button {
+  font-family: 'Marvel', sans-serif;
+  background-color: white;
   margin-top: 2rem;
   text-align: center;
   border-radius: 7px;
   height: 15%;
   width: 25%;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 
 .stats{
