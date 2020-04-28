@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Connect 4</title>
+    <title>Connect 4 - Team Sharknado</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="grid.css">
 </head>
@@ -14,8 +14,8 @@
     <div class="main-body">
         <div class="header">
             <div class="game-info">
-                <div>games played:</div>
-                <div>round #:</div>
+                <div class="stats">games played:</div>
+                <div class="stats">round #:</div>
             </div>
             <div>
                 <div clas="title">PLACEHOLDER</div>
@@ -27,9 +27,12 @@
             </div>
         </div>
         <aside class="left">
-            <div class="p1-icon">ICON</div>
-            <p>Wins:</p>
-            <p>Win %:</p>
+            <div class="info p1 icon">ICON</div>
+            <div class="info p1 name"></div>
+            <div class="stats p1">Wins:</div>
+            <div class="stats p1" id="p1_total_wins"></div>
+            <div class="stats p1">Win %:</div>
+            <div class="stats p1" id="p1_win-percentage"></div>
         </aside>
         <div class="game-container">
             <div class="row">
@@ -88,9 +91,12 @@
             </div>
         </div>
         <div class="right">
-            <div class="p2icon"></div>
-            <p>Wins:</p>
-            <p>Win %:</p>
+            <div class="info p2 icon">ICON</div>
+            <div class="info p2 name"></div>
+            <div class="stats p2">Wins:</div>
+            <div class="stats p2" id="p2_total_wins"></div>
+            <div class="stats p2">Win %:</div>
+            <div class="stats p2" id="p2_win-percentage"></div>
         </div>
 
         <footer class="footer">
