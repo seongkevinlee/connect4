@@ -11,99 +11,103 @@
 </head>
 
 <body>
-    <div class="main-body">
-        <div class="header">
-            <div class="game-info">
-                <div class="stats">games played:</div>
-                <div class="stats">round #:</div>
-            </div>
-            <div>
-                <div clas="title">PLACEHOLDER</div>
-            </div>
-            <div class="control-panel">
-                <div>
-                    control placeholder
-                </div>
-            </div>
-        </div>
-        <aside class="left">
-            <div class="info p1 icon">ICON</div>
-            <div class="info p1 name"></div>
-            <div class="stats p1">Wins:</div>
-            <div class="stats p1" id="p1_total_wins"></div>
-            <div class="stats p1">Win %:</div>
-            <div class="stats p1" id="p1_win-percentage"></div>
-        </aside>
-        <div class="game-container">
-            <div class="row">
-                <div class="col-1 game-piece">0 5</div>
-                <div class="col-1 game-piece">1 5</div>
-                <div class="col-1 game-piece">2 5</div>
-                <div class="col-1 game-piece">3 5</div>
-                <div class="col-1 game-piece">4 5</div>
-                <div class="col-1 game-piece">5 5</div>
-                <div class="col-1 game-piece">6 5</div>
-            </div>
-            <div class="row">
-                <div class="col-1 game-piece">0 4</div>
-                <div class="col-1 game-piece">1 4</div>
-                <div class="col-1 game-piece">2 4</div>
-                <div class="col-1 game-piece">3 4</div>
-                <div class="col-1 game-piece">4 4</div>
-                <div class="col-1 game-piece">5 4</div>
-                <div class="col-1 game-piece">6 4</div>
-            </div>
-            <div class="row">
-                <div class="col-1 game-piece">0 3</div>
-                <div class="col-1 game-piece">1 3</div>
-                <div class="col-1 game-piece">2 3</div>
-                <div class="col-1 game-piece">3 3</div>
-                <div class="col-1 game-piece">4 3</div>
-                <div class="col-1 game-piece">5 3</div>
-                <div class="col-1 game-piece">6 3</div>
-            </div>
-            <div class="row">
-                <div class="col-1 game-piece">0 2</div>
-                <div class="col-1 game-piece">1 2</div>
-                <div class="col-1 game-piece">2 2</div>
-                <div class="col-1 game-piece">3 2</div>
-                <div class="col-1 game-piece">4 2</div>
-                <div class="col-1 game-piece">5 2</div>
-                <div class="col-1 game-piece">6 2</div>
-            </div>
-            <div class="row">
-                <div class="col-1 game-piece">0 1</div>
-                <div class="col-1 game-piece">1 1</div>
-                <div class="col-1 game-piece">2 1</div>
-                <div class="col-1 game-piece">3 1</div>
-                <div class="col-1 game-piece">4 1</div>
-                <div class="col-1 game-piece">5 1</div>
-                <div class="col-1 game-piece">6 1</div>
-            </div>
-            <div class="row">
-                <div class="col-1 game-piece">0 0</div>
-                <div class="col-1 game-piece">1 0</div>
-                <div class="col-1 game-piece">2 0</div>
-                <div class="col-1 game-piece">3 0</div>
-                <div class="col-1 game-piece">4 0</div>
-                <div class="col-1 game-piece">5 0</div>
-                <div class="col-1 game-piece">6 0</div>
-            </div>
-        </div>
-        <div class="right">
-            <div class="info p2 icon">ICON</div>
-            <div class="info p2 name"></div>
-            <div class="stats p2">Wins:</div>
-            <div class="stats p2" id="p2_total_wins"></div>
-            <div class="stats p2">Win %:</div>
-            <div class="stats p2" id="p2_win-percentage"></div>
-        </div>
+  <div class="model win-model" id="win_model">
+    <div class="model-txt info">Player X won!</div>
+    <button class="button">Wanna play again?</button>
+  </div>
+  <div class="main-body">
+      <div class="header">
+          <div class="game-info">
+              <div class="stats">games played:</div>
+              <div class="stats">round #:</div>
+          </div>
+          <div>
+              <div clas="title">PLACEHOLDER</div>
+          </div>
+          <div class="control-panel">
+              <div>
+                  control placeholder
+              </div>
+          </div>
+      </div>
+      <aside class="left">
+          <div class="info p1 icon">ICON</div>
+          <div class="info p1 name"></div>
+          <div class="stats p1">Wins:</div>
+          <div class="stats p1" id="p1_total_wins"></div>
+          <div class="stats p1">Win %:</div>
+          <div class="stats p1" id="p1_win-percentage"></div>
+      </aside>
+      <div class="game-container">
+          <div class="row">
+              <div class="col-1 game-piece">0 5</div>
+              <div class="col-1 game-piece">1 5</div>
+              <div class="col-1 game-piece">2 5</div>
+              <div class="col-1 game-piece">3 5</div>
+              <div class="col-1 game-piece">4 5</div>
+              <div class="col-1 game-piece">5 5</div>
+              <div class="col-1 game-piece">6 5</div>
+          </div>
+          <div class="row">
+              <div class="col-1 game-piece">0 4</div>
+              <div class="col-1 game-piece">1 4</div>
+              <div class="col-1 game-piece">2 4</div>
+              <div class="col-1 game-piece">3 4</div>
+              <div class="col-1 game-piece">4 4</div>
+              <div class="col-1 game-piece">5 4</div>
+              <div class="col-1 game-piece">6 4</div>
+          </div>
+          <div class="row">
+              <div class="col-1 game-piece">0 3</div>
+              <div class="col-1 game-piece">1 3</div>
+              <div class="col-1 game-piece">2 3</div>
+              <div class="col-1 game-piece">3 3</div>
+              <div class="col-1 game-piece">4 3</div>
+              <div class="col-1 game-piece">5 3</div>
+              <div class="col-1 game-piece">6 3</div>
+          </div>
+          <div class="row">
+              <div class="col-1 game-piece">0 2</div>
+              <div class="col-1 game-piece">1 2</div>
+              <div class="col-1 game-piece">2 2</div>
+              <div class="col-1 game-piece">3 2</div>
+              <div class="col-1 game-piece">4 2</div>
+              <div class="col-1 game-piece">5 2</div>
+              <div class="col-1 game-piece">6 2</div>
+          </div>
+          <div class="row">
+              <div class="col-1 game-piece">0 1</div>
+              <div class="col-1 game-piece">1 1</div>
+              <div class="col-1 game-piece">2 1</div>
+              <div class="col-1 game-piece">3 1</div>
+              <div class="col-1 game-piece">4 1</div>
+              <div class="col-1 game-piece">5 1</div>
+              <div class="col-1 game-piece">6 1</div>
+          </div>
+          <div class="row">
+              <div class="col-1 game-piece">0 0</div>
+              <div class="col-1 game-piece">1 0</div>
+              <div class="col-1 game-piece">2 0</div>
+              <div class="col-1 game-piece">3 0</div>
+              <div class="col-1 game-piece">4 0</div>
+              <div class="col-1 game-piece">5 0</div>
+              <div class="col-1 game-piece">6 0</div>
+          </div>
+      </div>
+      <div class="right">
+          <div class="info p2 icon">ICON</div>
+          <div class="info p2 name"></div>
+          <div class="stats p2">Wins:</div>
+          <div class="stats p2" id="p2_total_wins"></div>
+          <div class="stats p2">Win %:</div>
+          <div class="stats p2" id="p2_win-percentage"></div>
+      </div>
 
-        <footer class="footer">
-            <div class="timer">TIMER</div>
-        </footer>
+      <footer class="footer">
+          <div class="timer">TIMER</div>
+      </footer>
 
-    </div>
+  </div>
 </body>
 
 </html>
