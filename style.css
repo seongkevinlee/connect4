@@ -7,7 +7,7 @@ body{
   width: 1250px;
   margin:auto;
   font-size: 2vmax;
-  background-image: url(images/background.jpg);
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.4), rgb(255, 255, 255, 0.4)), url(images/background.jpg);
   background-size: 90%;
   background-position:right top;
   background-repeat: none;
@@ -122,6 +122,8 @@ background-image: url(images/pause.png);
   border: 1px solid;
 }
 
+
+
 .start-modal {
   background-image:  linear-gradient(to right, rgba(255, 255, 255, 0.6), rgb(255, 255, 255, 0.6)), url(./images/logo-start.png);
   background-position: center;
@@ -171,16 +173,27 @@ background-image: url(images/pause.png);
 .stats{
   background-color: palevioletred;
   border: rebeccapurple 1px solid;
-  border-radius: 20%;
+  border-radius: 7px;
   font-size: 1.5rem;
   margin: auto;
 }
 
 .info{
-  background-color: greenyellow;
-  border: rebeccapurple 1px solid;
+  border: rgb(0, 0, 0) 1px solid;
   border-radius: 7px;
   margin: auto;
+}
+.p1.icon {
+  height: 16%;
+  background-image: url(./images/gamepiece-red.png);
+  background-position: center;
+  background-size: cover;
+}
+.p2.icon {
+  height: 16%;
+  background-image: url(./images/gamepiece-yellow.png);
+  background-position: center;
+  background-size: cover;
 }
 
 .timer{
@@ -195,7 +208,7 @@ background-image: url(images/pause.png);
   height: 20%;
   background-color: firebrick;
   border: rebeccapurple 1px solid;
-  border-radius: 20%;
+  border-radius: 7px;
   font-size: 2rem;
   color: white;
   margin: auto;
@@ -210,7 +223,7 @@ background-image: url(images/pause.png);
   background-color: goldenrod;
   /* border: rebeccapurple 1px solid; */
   font-size: 2rem;
-  border-radius: 20%;
+  border-radius: 7px;
   margin: auto;
 }
 
