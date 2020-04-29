@@ -29,6 +29,8 @@ var winModalTxt = document.querySelector('.win-modal .info');
 // Timer
 var timerEle = document.querySelector(".timer");
 var maxTurnTimeEle = document.querySelector('.round-time');
+var gameBoardImage = document.querySelector('.game-board')
+var resetButton = document.querySelector('.reset-game');
 
 /*--------- Global Variables ---------*/
 var currentPlayer = 1;
@@ -37,7 +39,8 @@ var colLength = 7;
 var maxDiagonal = rowLength < colLength ? rowLength : colLength;
 var gamePieces = [];
 var occupiedPiece = [];
-
+var music = new Audio();
+music.src = './audio/music1.mp3';
 /*-------- Timer --------*/
 var timerId = null;
 var timerCountdown = null;
@@ -67,11 +70,11 @@ var player1Wins = 0;
 var player2Wins = 0;
 
 /*-------- Event Listeners --------*/
-toggleSound.addEventListener("click", toggleSound);
+toggleSound.addEventListener("click", toggleS);
 restartButton.addEventListener("click", restartGame);
 pauseGame.addEventListener("click", pauseGame);
 startButton.addEventListener("click", startGame)
-
+resetButton.addEventListener("click", restartGame)
 /*-------- Function Calls --------*/
 // createSymbolicTokens();
 
@@ -82,6 +85,9 @@ function startGame() {
   p1Name.classList.remove("hidden");
   p2Name.classList.remove("hidden");
 
+  if(music.paused) {
+    music.play();
+  }
   if (player1Input.value){
     p1Name.textContent = player1Input.value;
   } else {
@@ -211,7 +217,7 @@ function checkRightDiagonal(lastCol, lastRow) {
     row--;
   }
 
-  while (col > 0 && row < rowLength) {
+  while (col >= 0 && row <= rowLength) {
     if (gameBoardArray[col][row] === currentPlayer) {
       piecesCounter++;
     } else {
@@ -295,12 +301,16 @@ function updateStats(){
 }
 
 function displayWin(){
+  gameBoardImage.classList.add('hidden');
   winModal.classList.remove('hidden');
   winModalTxt.textContent = `Player ${currentPlayer} won!`
+  gameContainer.className = "game-container hidden"
 }
 
 function restartGame() {
   occupiedPiece = document.querySelectorAll('.token');
+  startModal.classList.remove('hidden');
+  gameContainer.classList.add('hidden');
   for (let i = 0; i < occupiedPiece.length; i++) {
     occupiedPiece[i].className = 'game-piece col-1';
   }
@@ -311,11 +321,12 @@ function restartGame() {
   timerId = null;
   timer();
   resetGameBoard();
+  gameBoardImage.classList.remove('hidden');
 }
 
-// function toggleSound(){
-
-// }
+function toggleS() {
+  music.muted = !music.muted
+}
 
 // function pauseGame(){
 
