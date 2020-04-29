@@ -67,14 +67,20 @@ background-image: url(images/pause.png);
 }
 
 .game-container {
-  background-image: url(./images/gameboardoverlay.png);
-  background-position: left;
-  background-size: cover;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-evenly;
   width: 73%;
   height: 75%;
   /* background-color:blue; */
+}
+.game-board {
+  background-image: url("./images/gameboardoverlay.png");
+  background-size: cover;
+  position: absolute;
+  pointer-events: none;
+  width: 49%;
+  height: 90%;
 }
 
 .win-modal{
@@ -281,11 +287,17 @@ background-image: url(images/pause.png);
 }
 
 .p1.token{
-  background-color: firebrick;
+  background-image: url(./images/gamepiece-red.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .p2.token{
-  background-color: goldenrod;
+  background-image: url(./images/gamepiece-yellow.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .hidden {
