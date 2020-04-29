@@ -271,11 +271,6 @@ function restartGame() {
     occupiedPiece[i].className = 'game-piece';
   }
   winModal.classList.add('hidden');
-  if (currentPlayer === 1) {
-    currentPlayer = 2;
-  } else {
-    currentPlayer = 1;
-  }
   clearInterval(timerId);
   timerId = null;
   timer();
