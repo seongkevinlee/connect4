@@ -9,16 +9,18 @@ var pauseGame = document.querySelector(".pause-game");
 var currentPlayer = 1;
 var rowLength = 6;
 var colLength = 7;
+var maxDiagonal = rowLength < colLength ? rowLength : colLength;
 var gamePieces = [];
 
 //GAME BOARD MATRIX
 var gameBoardArray = [
-  [0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0]
 ];
 
 // Archives the token objects that have been placed on the board
@@ -84,10 +86,59 @@ function checkWin(lastPlace) {
     //Vertical Check
 }
 
+function checkRightDiagonal(lastCol, lastRow){
+  let piecesCounter = 0;
+  let col = lastCol;
+  let row = lastRow;
+  let smallerNum = lastCol<lastRow ? lastCol : lastRow;
+  while(smallerNum>0){
+    col--;
+    row--;
+  }
+
+  while (col < colLength && row < rowLength) {
+    if (gameBoardArray[col][row] === currentPlayer) {
+      piecesCounter++;
+    }
+    col++;
+    row++;
+  }
+
+  if (piecesCounter === 4) {
+    return true;
+  }
+
+  return false;
+}
+
+function checkLeftDiagonal(lastCol, lastRow) {
+  let piecesCounter = 0;
+  let col = lastCol;
+  let row = lastRow;
+  while (col < 6 && row > 0) {
+    col++;
+    row--;
+  }
+
+  while (col > 0 && row < rowLength) {
+    if (gameBoardArray[col][row] === currentPlayer) {
+      piecesCounter++;
+    }
+    col--;
+    row++;
+  }
+
+  if (piecesCounter === 4) {
+    return true;
+  }
+
+  return false;
+}
+
 // expect to get an array
 function checkVertical(lastCol){
-  let piecesCounter=0;
-  for (let row = 0; row < rowLength-1; row++){
+  let piecesCounter = 0;
+  for (let row = 0; row < rowLength; row++){
     if (gameBoardArray[lastCol][row]===currentPlayer){
       piecesCounter++;
     }
@@ -103,7 +154,7 @@ function checkVertical(lastCol){
 // expect to get an array
 function checkHorizontal(lastRow) {
   let piecesCounter = 0;
-  for (let col = 0; col < colLength-1; col++) {
+  for (let col = 0; col < colLength; col++) {
     if (gameBoardArray[col][lastRow] === currentPlayer) {
       piecesCounter++;
     }
