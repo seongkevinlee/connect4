@@ -6,7 +6,7 @@ var rows = document.querySelectorAll(".row");
 // Controls
 var toggleSound = document.querySelector(".toggle-sound");
 var restartButton = document.querySelector(".win-button");
-var pauseGame = document.querySelector(".pause-game");
+var pauseButton = document.querySelector(".pause-game");
 var startButton = document.querySelector("#start_button");
 
 // Player stuff & stats
@@ -72,7 +72,7 @@ var player2Wins = 0;
 /*-------- Event Listeners --------*/
 toggleSound.addEventListener("click", toggleS);
 restartButton.addEventListener("click", restartGame);
-pauseGame.addEventListener("click", pauseGame);
+pauseButton.addEventListener("click", pauseGame);
 startButton.addEventListener("click", startGame)
 resetButton.addEventListener("click", restartGame)
 /*-------- Function Calls --------*/
@@ -326,12 +326,21 @@ function restartGame() {
 }
 
 function toggleS() {
-  music.muted = !music.muted
+  music.muted = !music.muted;
 }
 
-// function pauseGame(){
+function pauseGame(){
+  if(timerId){
+    gameContainer.removeEventListener('click', addToken);
+    clearTimeout(timerId);
+    timerId = null;
+  } else {
+    gameContainer.addEventListener('click', addToken);
+    timer()
+  }
 
-// }
+
+}
 
 
 function timer() {
