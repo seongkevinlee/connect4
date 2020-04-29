@@ -41,6 +41,8 @@ var gamePieces = [];
 var occupiedPiece = [];
 var music = new Audio();
 music.src = './audio/music1.mp3';
+var availableGamePieces = 0;
+
 /*-------- Timer --------*/
 var timerId = null;
 var timerCountdown = null;
@@ -85,6 +87,12 @@ function startGame() {
   p1Name.classList.remove("hidden");
   p2Name.classList.remove("hidden");
 
+  for (let col = 0; col < gameBoardArray.length; col++) {
+    for (let row = 0; row < gameBoardArray[col].length; row++) {
+      availableGamePieces++;
+    }
+  }
+
   if(music.paused) {
     music.play();
   }
@@ -113,7 +121,6 @@ function startGame() {
   }
 }
 
-
 function addToken(event) {
     if (!event.target.classList.contains('game-piece')) {
         return;
@@ -128,7 +135,8 @@ function addToken(event) {
                 currentDiv.className = ('p1 token');
                 gameBoardArray[currentCol][rowIndex] = 1;
                 if(checkWin(currentDiv)){
-                  displayWin();
+                  setTimeout(displayWin, 1500);
+                  gameContainer.removeEventListener("click", addToken);
                   player1Wins++;
                   gamesPlayed++;
                   clearTimeout(timerId);
@@ -137,13 +145,15 @@ function addToken(event) {
                 currentPlayer = 2;
                 timerCountdown = maxTurnTime;
                 rounds++;
+                availableGamePieces--;
                 updateStats();
                 return;
             } else {
                 currentDiv.className = ('p2 token');
                 gameBoardArray[currentCol][rowIndex] = 2;
                 if (checkWin(currentDiv)) {
-                  displayWin();
+                  setTimeout(displayWin, 1500);
+                  gameContainer.removeEventListener("click", addToken);
                   player2Wins++;
                   gamesPlayed++;
                   clearTimeout(timerId);
@@ -152,6 +162,7 @@ function addToken(event) {
                 currentPlayer = 1;
                 timerCountdown = maxTurnTime;
                 rounds++;
+                availableGamePieces--;
                 updateStats();
                 return;
             }
@@ -180,6 +191,17 @@ function checkWin(lastPlace) {
     return true;
   }
 
+  if (checkTie()) {
+    return true;
+  }
+
+  return false;
+}
+
+function checkTie(){
+  if (!availableGamePieces){
+    return true;
+  }
   return false;
 }
 
