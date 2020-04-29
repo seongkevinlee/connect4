@@ -166,7 +166,7 @@ function checkRightDiagonal(lastCol, lastRow) {
     row--;
   }
 
-  while (col >= 0 && row <= rowLength) {
+  while (col > 0 && row < rowLength) {
     if (gameBoardArray[col][row] === currentPlayer) {
       piecesCounter++;
     } else {
@@ -223,16 +223,18 @@ function checkHorizontal(lastRow) {
   return false;
 }
 
-function createSymbolicTokens(){
+function resetGameBoard(){
+
+  gameBoardArray = [];
 
   for (let col = 0; col < colLength; col++) {
-    gamePieces.push([]);
+    gameBoardArray.push([]);
   }
 
   // creates a game-piece of 0 to indicate the spot is empty
   for (let col = 0; col < colLength; col++){
     for (let row = 0; row < rowLength; row++){
-      gamePieces[col].push(0);
+      gameBoardArray[col].push(0);
     }
   }
 }
@@ -248,6 +250,7 @@ function restartGame(){
       occupiedPiece[i].className = 'game-piece';
     }
     winModal.classList.add('hidden');
+    resetGameBoard();
 }
 
 
