@@ -61,8 +61,6 @@ background-image: url(images/pause.png);
   flex-Wrap: wrap;
   justify-content: space-between;
   width:900px;
-  min-height: 48vmax;
-  min-width: 56vmax;
   margin: auto;
 }
 
