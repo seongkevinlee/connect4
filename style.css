@@ -37,7 +37,7 @@ body{
   border-radius: 7px;
 }
 .toggle-sound,
-.restart-game,
+.reset-game,
 .pause-game{
   border-radius: 7px;
   background-size: cover;
@@ -47,7 +47,7 @@ body{
 .toggle-sound{
   background-image: url(images/sound.png);
 }
-.restart-game{
+.reset-game{
   background-image: url(images/restart.png);
 }
 
