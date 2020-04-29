@@ -2,9 +2,13 @@
 var gameContainer = document.querySelector(".game-container");
 var rows = document.querySelectorAll(".row");
 var toggleSound = document.querySelector(".toggle-sound");
-var restartGame = document.querySelector(".restart-game");
+var restartButton = document.querySelector(".win-button");
 var pauseGame = document.querySelector(".pause-game");
 var timerEle = document.querySelector(".timer");
+var winModal = document.querySelector('.win-modal')
+var winModalTxt = document.querySelector('.win-modal .info');
+var occupiedPiece = [];
+
 
 /*-------- Global Variables --------*/
 var currentPlayer = 1;
@@ -39,7 +43,7 @@ var player2Wins = 0;
 /*-------- Event Listeners --------*/
 gameContainer.addEventListener("click", addToken);
 toggleSound.addEventListener("click", toggleSound);
-restartGame.addEventListener("click", restartGame);
+restartButton.addEventListener("click", restartGame);
 pauseGame.addEventListener("click", pauseGame);
 
 /*-------- Set Elements --------*/
@@ -86,18 +90,22 @@ function checkWin(lastPlace) {
   console.log('current Row:', currentRow)
 
   if (checkHorizontal(currentRow)) {
+    displayWin()
     return true;
   }
 
   if (checkVertical(currentCol)) {
+    displayWin()
     return true;
   }
 
   if (checkLeftDiagonal(currentCol, currentRow)) {
+    displayWin()
     return true;
   }
 
   if (checkRightDiagonal(currentCol, currentRow)) {
+    displayWin()
     return true;
   }
 
@@ -126,6 +134,7 @@ function checkLeftDiagonal(lastCol, lastRow){
   }
 
   if (piecesCounter === 4) {
+    console.log('works')
     return true;
   }
 
@@ -153,6 +162,7 @@ function checkRightDiagonal(lastCol, lastRow) {
   }
 
   if (piecesCounter === 4) {
+    console.log('works')
     return true;
   }
 
@@ -211,11 +221,21 @@ function createSymbolicTokens(){
   }
 }
 
+function displayWin(){
+  winModal.classList.remove('hidden');
+  winModalTxt.textContent = `Player ${currentPlayer} won!`
+}
+
+function restartGame(){
+  occupiedPiece = document.querySelectorAll('.token');
+    for (let i = 0; i < occupiedPiece.length; i++){
+      occupiedPiece[i].className = 'game-piece';
+    }
+    winModal.classList.add('hidden');
+}
+
+
 // function toggleSound(){
-
-// }
-
-// function restartGame(){
 
 // }
 
