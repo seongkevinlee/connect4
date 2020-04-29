@@ -76,7 +76,8 @@ toggleSound.addEventListener("click", toggleS);
 restartButton.addEventListener("click", restartGame);
 pauseButton.addEventListener("click", pauseGame);
 startButton.addEventListener("click", startGame)
-resetButton.addEventListener("click", restartGame)
+// Control panel button
+resetButton.addEventListener("click", function(){restartGame(currentPlayer)})
 /*-------- Function Calls --------*/
 // createSymbolicTokens();
 
@@ -95,6 +96,7 @@ function startGame() {
 
   if(music.paused) {
     music.play();
+    music.volume = 0.2;
   }
   if (player1Input.value){
     p1Name.textContent = player1Input.value;
@@ -135,14 +137,15 @@ function addToken(event) {
                 currentDiv.className = ('p1 token');
                 gameBoardArray[currentCol][rowIndex] = 1;
                 if(checkWin(currentDiv)){
-                  setTimeout(displayWin, 1500);
+                  setTimeout(function () { displayWin(2) }, 1500);
                   gameContainer.removeEventListener("click", addToken);
                   player1Wins++;
                   gamesPlayed++;
                   clearTimeout(timerId);
                   timerId = null;
+                } else {
+                  currentPlayer = 2;
                 }
-                currentPlayer = 2;
                 timerCountdown = maxTurnTime;
                 rounds++;
                 availableGamePieces--;
@@ -152,14 +155,15 @@ function addToken(event) {
                 currentDiv.className = ('p2 token');
                 gameBoardArray[currentCol][rowIndex] = 2;
                 if (checkWin(currentDiv)) {
-                  setTimeout(displayWin, 1500);
+                  setTimeout(function(){displayWin(1)}, 1500);
                   gameContainer.removeEventListener("click", addToken);
                   player2Wins++;
                   gamesPlayed++;
                   clearTimeout(timerId);
                   timerId = null;
+                } else {
+                  currentPlayer = 1;
                 }
-                currentPlayer = 1;
                 timerCountdown = maxTurnTime;
                 rounds++;
                 availableGamePieces--;
@@ -333,7 +337,7 @@ function displayWin(){
   gameContainer.className = "game-container hidden"
 }
 
-function restartGame() {
+function restartGame(startingPlayer) {
   occupiedPiece = document.querySelectorAll('.token');
   startModal.classList.remove('hidden');
   gameContainer.classList.add('hidden');
@@ -344,6 +348,7 @@ function restartGame() {
   rounds = 0;
   updateStats();
   resetGameBoard();
+  currentPlayer = startingPlayer;
   gameBoardImage.classList.remove('hidden');
 }
 
@@ -360,10 +365,7 @@ function pauseGame(){
     gameContainer.addEventListener('click', addToken);
     timer()
   }
-
-
 }
-
 
 function timer() {
   timerId = setTimeout(function(){
