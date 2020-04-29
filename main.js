@@ -111,6 +111,8 @@ function checkLeftDiagonal(lastCol, lastRow){
   while (col < colLength && row < rowLength) {
     if (gameBoardArray[col][row] === currentPlayer) {
       piecesCounter++;
+    } else {
+      piecesCounter = 0;
     }
     col++;
     row++;
@@ -135,7 +137,10 @@ function checkRightDiagonal(lastCol, lastRow) {
   while (col >= 0 && row <= rowLength) {
     if (gameBoardArray[col][row] === currentPlayer) {
       piecesCounter++;
+    } else {
+      piecesCounter = 0;
     }
+
     col--;
     row++;
   }
@@ -158,6 +163,8 @@ function checkVertical(lastCol){
 
   if(piecesCounter===4){
     return true;
+  } else {
+    piecesCounter = 0;
   }
 
   return false;
@@ -174,6 +181,8 @@ function checkHorizontal(lastRow) {
 
   if (piecesCounter === 4) {
     return true;
+  } else {
+    piecesCounter = 0;
   }
 
   return false;
