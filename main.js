@@ -1,18 +1,33 @@
 /*-------- Global Element Selectors --------*/
+// Game functionality
 var gameContainer = document.querySelector(".game-container");
 var rows = document.querySelectorAll(".row");
+
+// Controls
 var toggleSound = document.querySelector(".toggle-sound");
 var restartButton = document.querySelector(".win-button");
 var pauseGame = document.querySelector(".pause-game");
-var startModal = document.querySelector(".start-modal");
 var startButton = document.querySelector("#start_button");
+
+// Player stuff & stats
 var player1Input = document.querySelector(".player1-name");
 var player2Input = document.querySelector(".player2-name");
-var p1Name = document.querySelector(".p1.name")
-var p2Name = document.querySelector(".p2.name")
-var timerEle = document.querySelector(".timer");
+var p1Name = document.querySelector(".p1.name");
+var p2Name = document.querySelector(".p2.name");
+var p1WinsEle = document.getElementById("p1_total_wins");
+var p2WinsEle = document.getElementById("p2_total_wins");
+var p1WinPercent = document.getElementById("p1_win_percent");
+var p2WinPercent = document.getElementById("p2_win_percent");
+var totalGames = document.getElementById("games-played");
+var roundStats = document.getElementById("round");
+
+// models
+var startModal = document.querySelector(".start-modal");
 var winModal = document.querySelector('.win-modal')
 var winModalTxt = document.querySelector('.win-modal .info');
+
+// Timer
+var timerEle = document.querySelector(".timer");
 var maxTurnTimeEle = document.querySelector('.round-time');
 
 /*--------- Global Variables ---------*/
@@ -106,16 +121,28 @@ function addToken(event) {
             if (currentPlayer === 1) {
                 currentDiv.className = ('p1 token');
                 gameBoardArray[currentCol][rowIndex] = 1;
-                checkWin(currentDiv)    //lastPlace
+                if(checkWin(currentDiv)){
+                  displayWin();
+                  player1Wins++;
+                  gamesPlayed++;
+                }
                 currentPlayer = 2;
-              timerCountdown = maxTurnTime;
+                timerCountdown = maxTurnTime;
+                rounds++;
+                updateStats();
                 return;
             } else {
                 currentDiv.className = ('p2 token');
                 gameBoardArray[currentCol][rowIndex] = 2;
-                checkWin(currentDiv)
+                if (checkWin(currentDiv)) {
+                  displayWin();
+                  player2Wins++;
+                  gamesPlayed++;
+                }
                 currentPlayer = 1;
                 timerCountdown = maxTurnTime;
+                rounds++;
+                updateStats();
                 return;
             }
         }
@@ -128,22 +155,18 @@ function checkWin(lastPlace) {
   console.log('current Row:', currentRow)
 
   if (checkHorizontal(currentRow)) {
-    displayWin()
     return true;
   }
 
   if (checkVertical(currentCol)) {
-    displayWin()
     return true;
   }
 
   if (checkLeftDiagonal(currentCol, currentRow)) {
-    displayWin()
     return true;
   }
 
   if (checkRightDiagonal(currentCol, currentRow)) {
-    displayWin()
     return true;
   }
 
@@ -260,6 +283,17 @@ function resetGameBoard(){
   }
 }
 
+function updateStats(){
+  p1WinsEle.textContent = player1Wins;
+  p2WinsEle.textContent = player2Wins;
+  if(gamesPlayed){
+    p1WinPercent.textContent = `${Math.floor(100 * (player1Wins / gamesPlayed))}%`;
+    p2WinPercent.textContent = `${Math.floor(100 * (player2Wins / gamesPlayed))}%`;
+  }
+  totalGames.textContent = `GAMES PLAYED: ${gamesPlayed}`;
+  roundStats.textContent = `ROUND #: ${rounds}`;
+}
+
 function displayWin(){
   winModal.classList.remove('hidden');
   winModalTxt.textContent = `Player ${currentPlayer} won!`
@@ -268,15 +302,12 @@ function displayWin(){
 function restartGame() {
   occupiedPiece = document.querySelectorAll('.token');
   for (let i = 0; i < occupiedPiece.length; i++) {
-    occupiedPiece[i].className = 'game-piece';
+    occupiedPiece[i].className = 'game-piece col-1';
   }
   winModal.classList.add('hidden');
-  if (currentPlayer === 1) {
-    currentPlayer = 2;
-  } else {
-    currentPlayer = 1;
-  }
-  clearInterval(timerId);
+  updateStats();
+  rounds = 0;
+  clearTimeout(timerId);
   timerId = null;
   timer();
   resetGameBoard();
@@ -290,11 +321,6 @@ function restartGame() {
 
 // }
 
-// function lowestAvailable(){
-//   var unclaimed;
-
-//   return unclaimed;
-// }
 
 function timer() {
   timerId = setTimeout(function(){

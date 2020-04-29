@@ -75,7 +75,7 @@ background-image: url(images/pause.png);
   /* background-color:blue; */
 }
 .game-board {
-  background-image: url("./images/gameboardoverlay.png");
+  /* background-image: url("./images/gameboardoverlay.png"); */
   background-size: cover;
   position: absolute;
   pointer-events: none;
