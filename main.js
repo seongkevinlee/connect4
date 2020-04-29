@@ -4,11 +4,16 @@ var rows = document.querySelectorAll(".row");
 var toggleSound = document.querySelector(".toggle-sound");
 var restartButton = document.querySelector(".win-button");
 var pauseGame = document.querySelector(".pause-game");
+var startModal = document.querySelector(".start-modal");
+var startButton = document.querySelector("#start_button");
+var player1Input = document.querySelector(".player1-name");
+var player2Input = document.querySelector(".player2-name");
+var p1Name = document.querySelector(".p1-name")
+var p2Name = document.querySelector(".p2-name")
 var timerEle = document.querySelector(".timer");
 var winModal = document.querySelector('.win-modal')
 var winModalTxt = document.querySelector('.win-modal .info');
 var occupiedPiece = [];
-
 
 /*-------- Global Variables --------*/
 var currentPlayer = 1;
@@ -45,6 +50,7 @@ gameContainer.addEventListener("click", addToken);
 toggleSound.addEventListener("click", toggleSound);
 restartButton.addEventListener("click", restartGame);
 pauseGame.addEventListener("click", pauseGame);
+startButton.addEventListener("click", startGame)
 
 /*-------- Set Elements --------*/
 timerEle.textContent = maxTurnTime;
@@ -56,6 +62,16 @@ var timerId = setInterval(timer, 1000);
 // createSymbolicTokens();
 
 /*-------- Function Declarations --------*/
+function startGame() {
+  startModal.classList.add("hidden");
+  gameContainer.classList.remove("hidden");
+  p1Name.classList.remove("hidden");
+  p2Name.classList.remove("hidden");
+  p1Name.textContent = player1Input.value;
+  p2Name.textContent = player2Input.value;
+}
+
+
 function addToken(event) {
     if (!event.target.classList.contains('game-piece')) {
         return;
@@ -150,7 +166,7 @@ function checkRightDiagonal(lastCol, lastRow) {
     row--;
   }
 
-  while (col > 0 && row < rowLength) {
+  while (col >= 0 && row <= rowLength) {
     if (gameBoardArray[col][row] === currentPlayer) {
       piecesCounter++;
     } else {
