@@ -73,7 +73,7 @@ function addToken(event) {
 
 function checkWin(lastPlace) {
   var currentRow = Number(lastPlace.id) % 10;
-  var currentCol = Math.floor(lastPlace.id) / 10;
+  var currentCol = Math.floor(lastPlace.id / 10);
   console.log('current Row:', currentRow)
 
   if (checkHorizontal(currentRow)) {
@@ -103,6 +103,7 @@ function checkLeftDiagonal(lastCol, lastRow){
   while(smallerNum>0){
     col--;
     row--;
+    smallerNum--;
   }
 
   while (col < colLength && row < rowLength) {
@@ -131,7 +132,7 @@ function checkRightDiagonal(lastCol, lastRow) {
     row--;
   }
 
-  while (col >= 0 && row <= rowLength) {
+  while (col > 0 && row < rowLength) {
     if (gameBoardArray[col][row] === currentPlayer) {
       piecesCounter++;
     } else {
