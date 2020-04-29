@@ -198,14 +198,14 @@ function checkVertical(lastCol){
   for (let row = 0; row < rowLength; row++){
     if (gameBoardArray[lastCol][row]===currentPlayer){
       piecesCounter++;
-    }
+    } else {
+      piecesCounter = 0;
   }
 
   if(piecesCounter===4){
     console.log('vworks');
     return true;
-  } else {
-    piecesCounter = 0;
+  }
   }
 
   return false;
@@ -217,14 +217,14 @@ function checkHorizontal(lastRow) {
   for (let col = 0; col < colLength; col++) {
     if (gameBoardArray[col][lastRow] === currentPlayer) {
       piecesCounter++;
-    }
+    } else {
+      piecesCounter = 0;
   }
 
   if (piecesCounter === 4) {
     console.log('hworks')
     return true;
-  } else {
-    piecesCounter = 0;
+  }
   }
 
   return false;
