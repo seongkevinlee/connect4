@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
 }
+html{
+  position: relative;
+}
 body{
   font-family: 'Marvel', sans-serif;
   height: 95vh;
@@ -74,12 +77,12 @@ background-image: url(images/pause.png);
   /* background-color:blue; */
 }
 
-.win-model{
+.win-modal{
   background-color: white;
   position: fixed;
   margin: auto;
-  height: 60%;
-  width: 50%;
+  height: 100vh;
+  width: 100%;
   min-height: 48vmax;
   min-width: 56vmax;
   display: flex;
@@ -87,6 +90,7 @@ background-image: url(images/pause.png);
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
+  left: 0
 }
 
 .row {
@@ -214,7 +218,7 @@ background-image: url(images/pause.png);
   margin: auto;
 }
 
-.model-txt{
+.modal-txt{
   display: flex;
   justify-content: center;
   align-items: center;
