@@ -15,7 +15,7 @@ var winModal = document.querySelector('.win-modal')
 var winModalTxt = document.querySelector('.win-modal .info');
 var occupiedPiece = [];
 
-/*-------- Global Variables --------*/
+/*--------- Global Variables ---------*/
 var currentPlayer = 1;
 var rowLength = 6;
 var colLength = 7;
