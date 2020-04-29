@@ -75,18 +75,30 @@ function addToken(event) {
 }
 
 function checkWin(lastPlace) {
+  var currentRow = Number(lastPlace.id) % 10;
+  var currentCol = Math.floor(lastPlace.id) /10;
+  console.log('current Row:', currentRow)
 
-    var currentRow = Number(lastPlace.id) % 10;
-    var currentCol = Math.floor(lastPlace.id) /10;
-    var numInARow = 0;
-    console.log('current Row:', currentRow)
-  checkHorizontal(currentRow);
-    //END HORIZONTAL
-  checkVertical(currentCol);
-    //Vertical Check
+  if (checkHorizontal(currentRow)) {
+    return true;
+  }
+
+  if (checkVertical(currentCol)) {
+    return true;
+  }
+
+  if (checkLeftDiagonal(currentCol, currentRow)) {
+    return true;
+  }
+
+  if(checkRightDiagonal(currentCol, currentRow)){
+    return true;
+  }
+
+    return false;
 }
 
-function checkRightDiagonal(lastCol, lastRow){
+function checkLeftDiagonal(lastCol, lastRow){
   let piecesCounter = 0;
   let col = lastCol;
   let row = lastRow;
@@ -111,7 +123,7 @@ function checkRightDiagonal(lastCol, lastRow){
   return false;
 }
 
-function checkLeftDiagonal(lastCol, lastRow) {
+function checkRightDiagonal(lastCol, lastRow) {
   let piecesCounter = 0;
   let col = lastCol;
   let row = lastRow;
@@ -120,7 +132,7 @@ function checkLeftDiagonal(lastCol, lastRow) {
     row--;
   }
 
-  while (col > 0 && row < rowLength) {
+  while (col >= 0 && row <= rowLength) {
     if (gameBoardArray[col][row] === currentPlayer) {
       piecesCounter++;
     }
