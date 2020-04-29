@@ -2,7 +2,7 @@
 var gameContainer = document.querySelector(".game-container");
 var rows = document.querySelectorAll(".row");
 var toggleSound = document.querySelector(".toggle-sound");
-var restartGame = document.querySelector(".restart-game");
+var restartButton = document.querySelector(".win-button");
 var pauseGame = document.querySelector(".pause-game");
 var startModal = document.querySelector(".start-modal");
 var startButton = document.querySelector("#start_button");
@@ -10,6 +10,10 @@ var player1Input = document.querySelector(".player1-name");
 var player2Input = document.querySelector(".player2-name");
 var p1Name = document.querySelector(".p1-name")
 var p2Name = document.querySelector(".p2-name")
+var timerEle = document.querySelector(".timer");
+var winModal = document.querySelector('.win-modal')
+var winModalTxt = document.querySelector('.win-modal .info');
+var occupiedPiece = [];
 
 /*-------- Global Variables --------*/
 var currentPlayer = 1;
@@ -17,6 +21,8 @@ var rowLength = 6;
 var colLength = 7;
 var maxDiagonal = rowLength < colLength ? rowLength : colLength;
 var gamePieces = [];
+var maxTurnTime = 30;
+var timerCountdown = maxTurnTime;
 
 //GAME BOARD MATRIX
 var gameBoardArray = [
@@ -42,14 +48,18 @@ var player2Wins = 0;
 /*-------- Event Listeners --------*/
 gameContainer.addEventListener("click", addToken);
 toggleSound.addEventListener("click", toggleSound);
-restartGame.addEventListener("click", restartGame);
+restartButton.addEventListener("click", restartGame);
 pauseGame.addEventListener("click", pauseGame);
 startButton.addEventListener("click", startGame)
 
+/*-------- Set Elements --------*/
+timerEle.textContent = maxTurnTime;
+
+/*-------- Timer --------*/
+var timerId = setInterval(timer, 1000);
+
 /*-------- Function Calls --------*/
 // createSymbolicTokens();
-
-
 
 /*-------- Function Declarations --------*/
 function startGame() {
@@ -76,12 +86,14 @@ function addToken(event) {
                 gameBoardArray[currentCol][rowIndex] = 1;
                 checkWin(currentDiv)    //lastPlace
                 currentPlayer = 2;
+              timerCountdown = maxTurnTime;
                 return;
             } else {
                 currentDiv.className = ('p2 token');
                 gameBoardArray[currentCol][rowIndex] = 2;
                 checkWin(currentDiv)
                 currentPlayer = 1;
+                timerCountdown = maxTurnTime;
                 return;
             }
         }
@@ -94,18 +106,22 @@ function checkWin(lastPlace) {
   console.log('current Row:', currentRow)
 
   if (checkHorizontal(currentRow)) {
+    displayWin()
     return true;
   }
 
   if (checkVertical(currentCol)) {
+    displayWin()
     return true;
   }
 
   if (checkLeftDiagonal(currentCol, currentRow)) {
+    displayWin()
     return true;
   }
 
   if (checkRightDiagonal(currentCol, currentRow)) {
+    displayWin()
     return true;
   }
 
@@ -134,6 +150,7 @@ function checkLeftDiagonal(lastCol, lastRow){
   }
 
   if (piecesCounter === 4) {
+    console.log('works')
     return true;
   }
 
@@ -161,6 +178,7 @@ function checkRightDiagonal(lastCol, lastRow) {
   }
 
   if (piecesCounter === 4) {
+    console.log('works')
     return true;
   }
 
@@ -219,11 +237,21 @@ function createSymbolicTokens(){
   }
 }
 
+function displayWin(){
+  winModal.classList.remove('hidden');
+  winModalTxt.textContent = `Player ${currentPlayer} won!`
+}
+
+function restartGame(){
+  occupiedPiece = document.querySelectorAll('.token');
+    for (let i = 0; i < occupiedPiece.length; i++){
+      occupiedPiece[i].className = 'game-piece';
+    }
+    winModal.classList.add('hidden');
+}
+
+
 // function toggleSound(){
-
-// }
-
-// function restartGame(){
 
 // }
 
@@ -236,3 +264,20 @@ function createSymbolicTokens(){
 
 //   return unclaimed;
 // }
+
+function timer() {
+  timerEle.textContent = timerCountdown--;
+  if (timerCountdown === 0) {
+    console.log("Time is UP!");
+    clearInterval(timerId);
+    if (currentPlayer === 1) {
+      currentPlayer = 2;
+      timerCountdown = maxTurnTime;
+      timerId = setInterval(timer, 1000);
+    } else {
+      currentPlayer = 1;
+      timerCountdown = maxTurnTime;
+      timerId = setInterval(timer, 1000);
+    }
+  }
+}
