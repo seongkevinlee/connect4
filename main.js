@@ -73,17 +73,26 @@ function addToken(event) {
 
 function checkWin(lastPlace) {
   var currentRow = Number(lastPlace.id) % 10;
-  var currentCol = Math.floor(lastPlace.id) /10;
+  var currentCol = Math.floor(lastPlace.id) / 10;
   console.log('current Row:', currentRow)
 
-    var currentCol = lastPlace.id % 10;
-    var currentRow = Math.floor(lastPlace.id /10);
-    var numInARow = 0;
-  checkHorizontal(currentRow);
-    //END HORIZONTAL
-  checkVertical(currentCol);
-    //Vertical Check
+  if (checkHorizontal(currentRow)) {
+    return true;
+  }
 
+  if (checkVertical(currentCol)) {
+    return true;
+  }
+
+  if (checkLeftDiagonal(currentCol, currentRow)) {
+    return true;
+  }
+
+  if (checkRightDiagonal(currentCol, currentRow)) {
+    return true;
+  }
+
+  return false;
 }
 
 function checkLeftDiagonal(lastCol, lastRow){
