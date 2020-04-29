@@ -14,6 +14,7 @@ var rowLength = 6;
 var colLength = 7;
 var maxDiagonal = rowLength < colLength ? rowLength : colLength;
 var gamePieces = [];
+var timerId = null;
 
 //GAME BOARD MATRIX
 var gameBoardArray = [
@@ -51,6 +52,9 @@ pauseGame.addEventListener("click", pauseGame);
 function addToken(event) {
     if (!event.target.classList.contains('game-piece')) {
         return;
+    }
+    if(!timerId) {
+      setInterval(timer, 1000)
     }
     var currentCol = Math.floor((event.target.id) / 10);
     // console.log(currentRow);
@@ -216,14 +220,20 @@ function displayWin(){
   winModalTxt.textContent = `Player ${currentPlayer} won!`
 }
 
-function restartGame(){
+function restartGame() {
   occupiedPiece = document.querySelectorAll('.token');
-    for (let i = 0; i < occupiedPiece.length; i++){
-      occupiedPiece[i].className = 'game-piece';
-    }
-    winModal.classList.add('hidden');
+  for (let i = 0; i < occupiedPiece.length; i++) {
+    occupiedPiece[i].className = 'game-piece';
+  }
+  winModal.classList.add('hidden');
+  if (currentPlayer === 1) {
+    currentPlayer = 2;
+  } else {
+    currentPlayer = 1;
+  }
+  clearInterval(timerId);
+  timerId = setInterval(timer, 1000);
 }
-
 
 // function toggleSound(){
 
