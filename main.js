@@ -14,8 +14,8 @@ var timerEle = document.querySelector(".timer");
 var winModal = document.querySelector('.win-modal')
 var winModalTxt = document.querySelector('.win-modal .info');
 var maxTurnTimeEle = document.querySelector('.round-time');
+var gameBoardImage = document.querySelector('.game-board')
 var resetButton = document.querySelector('.reset-game');
-var toggleSound = document.querySelector('.toggle-sound');
 
 /*--------- Global Variables ---------*/
 var currentPlayer = 1;
@@ -267,6 +267,7 @@ function resetGameBoard(){
 }
 
 function displayWin(){
+  gameBoardImage.classList.add('hidden');
   winModal.classList.remove('hidden');
   winModalTxt.textContent = `Player ${currentPlayer} won!`
   gameContainer.className = "game-container hidden"
@@ -284,6 +285,7 @@ function restartGame() {
   timerId = null;
   timer();
   resetGameBoard();
+  gameBoardImage.classList.remove('hidden');
 }
 
 function toggleS() {

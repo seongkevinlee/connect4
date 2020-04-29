@@ -6,12 +6,13 @@ html{
 }
 body{
   font-family: 'Marvel', sans-serif;
-  height: 95vh;
+  height: 650px;
   width: 1250px;
   margin:auto;
   font-size: 2vmax;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.4), rgb(255, 255, 255, 0.6)), url(images/background.jpg);
-  background-size: 90%;
+  background-size: cover;
+  background-attachment: fixed;
   background-position:right top;
   background-repeat: none;
 }
@@ -59,8 +60,7 @@ background-image: url(images/pause.png);
   display:flex;
   flex-Wrap: wrap;
   justify-content: space-between;
-  height:60%;
-  width:72%;
+  width:900px;
   min-height: 48vmax;
   min-width: 56vmax;
   margin: auto;
@@ -69,18 +69,19 @@ background-image: url(images/pause.png);
 .game-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  width: 73%;
-  height: 75%;
+  justify-content: center;
+  width: 658px;
+  height: 503px;
   /* background-color:blue; */
 }
 .game-board {
   background-image: url("./images/gameboardoverlay.png");
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
   position: absolute;
   pointer-events: none;
-  width: 49%;
-  height: 83%;
+  width: 667px;
+  height: 500px;
 }
 
 .win-modal{
@@ -106,30 +107,30 @@ background-image: url(images/pause.png);
 }
 
 .header {
-  height: 12.3%;
-  width: 100%;
+  height: 85px;
+  width: 1250px;
   display:flex;
   justify-content: space-around;
   border: 1px solid;
-  background-image: linear-gradient(to bottom, rgb(0, 102, 255, .5), rgb(255, 255, 255))
+  margin-bottom: 1px;
 }
 
 .header > div{
   flex-basis: 30%;
-  height: 100%;
+  height: 76px;
   margin: 0 1.35%;
 }
 
 .left, .right {
-  width: 12.5%;
-  height: 75%;
+  width: 116px;
+  height: 502px;
   border: 1px solid;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.4), rgb(255, 255, 255, 0.6))
 }
 
 .footer {
-  height: 12.3%;
-  width: 100%;
+  height: 80px;
+  width: 1250px;
   text-align: center;
   border: 1px solid;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.4), rgb(255, 255, 255, 0.6));
@@ -138,17 +139,18 @@ background-image: url(images/pause.png);
 }
 
 .start-modal {
-  background-image:  linear-gradient(to right, rgba(255, 255, 255, 0.6), rgb(255, 255, 255, 0.6)), url(./images/logo-start.png);
-  background-position: center;
-  background-size: cover;
-  width: 50%;
-  height: 45%;
+  background-image:  linear-gradient(to right, rgba(255, 255, 255, 0.8), rgb(255, 255, 255, 0.8)), url(./images/logo-start.png);
+  background-position:  -67px 195px;
+  background-size: 800px 330px;
+  background-repeat: no-repeat;
+  width: 668px;
+  height: 495px;
   background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  top: 50%;
+  top: 54%;
   left: 50%;
   position: fixed;
   transform: translate(-50%, -50%);
@@ -165,12 +167,14 @@ background-image: url(images/pause.png);
   -webkit-text-stroke-color: black; */
   color: black;
   font-size: 2rem;
-  width: 100%;
+  width: 650px;
   display: flex;
   justify-content: space-evenly;
 }
 .name-inputs > input {
   opacity: .8;
+  width: 200px;
+  height: 35px;
 }
 .start-button {
   font-family: 'Marvel', sans-serif;
@@ -181,6 +185,14 @@ background-image: url(images/pause.png);
   height: 15%;
   width: 25%;
   font-size: 1.8rem;
+  opacity: .8;
+}
+.time {
+  margin-top: 10px;
+}
+.round-time {
+  opacity: .8;
+  width: 50px;
 }
 
 .title {
@@ -190,17 +202,13 @@ background-image: url(images/pause.png);
   font-size: 4rem;
 }
 .stats{
-  background-color: rgb(255, 255, 255);
-  border: rgb(0, 0, 0) 1px solid;
-  border-radius: 7px;
   font-size: 1.3rem;
   margin: auto;
   text-align: center;
+  width: 80px;
+  height: 36px;
 }
 .game-stats {
-  background-color: rgb(255, 255, 255);
-  border: rgb(0, 0, 0) 1px solid;
-  border-radius: 7px;
   font-size: 1.5rem;
   margin: auto;
   text-align: left;
@@ -217,23 +225,23 @@ background-image: url(images/pause.png);
 }
 
 .info{
-  border: rgb(0, 0, 0) 1px solid;
-  border-radius: 7px;
   margin: auto;
 }
 .p1.icon {
-  height: 16%;
+  height: 80px;
   background-image: url(./images/gamepiece-red.png);
   background-position: center;
   background-size: cover;
   margin-top: 10px;
+  margin-bottom: 15px;
 }
 .p2.icon {
-  height: 16%;
+  height: 80px;
   background-image: url(./images/gamepiece-yellow.png);
   background-position: center;
   background-size: cover;
   margin-top: 10px;
+  margin-bottom: 15px;
 
 
 }
@@ -241,7 +249,7 @@ background-image: url(images/pause.png);
 .name {
   font-size: 1rem;
   text-align: center;
-  background-color: white;
+  margin-bottom: 15px;
 }
 
 .timer{
