@@ -30,7 +30,7 @@ var maxTurnTime = null;
 var delay = 1000;
 
 
-//GAME BOARD MATRIX
+// GAME BOARD MATRIX
 var gameBoardArray = [
   [0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0],
@@ -169,11 +169,11 @@ function checkLeftDiagonal(lastCol, lastRow){
     }
     col++;
     row++;
-  }
 
-  if (piecesCounter === 4) {
-    console.log('works')
-    return true;
+    if (piecesCounter === 4) {
+        console.log('works')
+        return true;
+    }
   }
 
   return false;
@@ -195,13 +195,12 @@ function checkRightDiagonal(lastCol, lastRow) {
       piecesCounter = 0;
     }
 
+    if (piecesCounter === 4) {
+      console.log('works')
+      return true;
+    }
     col--;
     row++;
-  }
-
-  if (piecesCounter === 4) {
-    console.log('works')
-    return true;
   }
 
   return false;
@@ -215,12 +214,12 @@ function checkVertical(lastCol){
       piecesCounter++;
     } else {
       piecesCounter = 0;
-  }
+    }
 
-  if(piecesCounter===4){
-    console.log('vworks');
-    return true;
-  }
+    if(piecesCounter===4){
+      console.log('vworks');
+      return true;
+    }
   }
 
   return false;
@@ -234,12 +233,12 @@ function checkHorizontal(lastRow) {
       piecesCounter++;
     } else {
       piecesCounter = 0;
-  }
+    }
 
-  if (piecesCounter === 4) {
-    console.log('hworks')
-    return true;
-  }
+    if (piecesCounter === 4) {
+      console.log('hworks')
+      return true;
+    }
   }
 
   return false;
