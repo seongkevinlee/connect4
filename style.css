@@ -84,21 +84,7 @@ background-image: url(images/pause.png);
   height: 500px;
 }
 
-.win-modal{
-  background-color: white;
-  position: fixed;
-  margin: auto;
-  height: 100vh;
-  width: 100%;
-  min-height: 48vmax;
-  min-width: 56vmax;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  flex-direction: column;
-  left: 0
-}
+
 
 .row {
   display: flex;
@@ -150,7 +136,7 @@ background-image: url(images/pause.png);
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  top: 54%;
+  top:335px;
   left: 50%;
   position: fixed;
   transform: translate(-50%, -50%);
@@ -259,23 +245,44 @@ background-image: url(images/pause.png);
   margin: auto;
 }
 
+.win-modal{
+  background-image: url(./images/winbg.jpg);
+  background-color: white;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: fixed;
+  margin: auto;
+  height: 650px;
+  width: 100%;
+  min-height: 48vmax;
+  min-width: 56vmax;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  left: 0
+}
 .win-button{
-  width: 30%;
-  height: 20%;
+  font-family: 'Marvel', sans-serif;
+  width: 365px;
+  height: 90px;
   background-color: rgb(255, 255, 255);
   border: rgb(0, 0, 0) 1px solid;
   border-radius: 7px;
   font-size: 2rem;
-  color: white;
+  color: black;
   margin: auto;
 }
 
 .modal-txt{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 30%;
-  height: 20%;
+  width: 365px;
+  height: 90px;
   background-color: goldenrod;
   /* border: rebeccapurple 1px solid; */
   font-size: 2rem;
