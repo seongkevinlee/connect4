@@ -131,6 +131,8 @@ function addToken(event) {
                   displayWin();
                   player1Wins++;
                   gamesPlayed++;
+                  clearTimeout(timerId);
+                  timerId = null;
                 }
                 currentPlayer = 2;
                 timerCountdown = maxTurnTime;
@@ -144,6 +146,8 @@ function addToken(event) {
                   displayWin();
                   player2Wins++;
                   gamesPlayed++;
+                  clearTimeout(timerId);
+                  timerId = null;
                 }
                 currentPlayer = 1;
                 timerCountdown = maxTurnTime;
@@ -317,9 +321,6 @@ function restartGame() {
   winModal.classList.add('hidden');
   updateStats();
   rounds = 0;
-  clearTimeout(timerId);
-  timerId = null;
-  timer();
   resetGameBoard();
   gameBoardImage.classList.remove('hidden');
 }
