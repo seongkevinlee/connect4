@@ -341,8 +341,8 @@ function restartGame() {
     occupiedPiece[i].className = 'game-piece col-1';
   }
   winModal.classList.add('hidden');
-  updateStats();
   rounds = 0;
+  updateStats();
   resetGameBoard();
   gameBoardImage.classList.remove('hidden');
 }
