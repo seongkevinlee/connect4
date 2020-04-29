@@ -41,16 +41,18 @@
       <div class="start-modal">
           <h4>ENTER PLAYER NAMES</h4>
           <div class="name-inputs">
-              <label for="player1-name" class="player1-label">PLAYER 1:</label>
-              <input type="text" class="player1-name" name="player1-name">
-              <label for="player2-name" class="player2-label">PLAYER 2:</label>
-              <input type="text" class="player2-name" name="player2-name">
+              <label for="player1-name" class="player1-label label">PLAYER 1:</label>
+              <input type="text" class="player1-name" name="player1-name" placeholder="Player 1">
+              <label for="player2-name" class="player2-label label">PLAYER 2:</label>
+              <input type="text" class="player2-name" name="player2-name" placeholder="Player 2">
           </div>
+          <label for="round-time" class="player1-label label">Round Time:</label>
+          <input type="number" class="round-time" name="round-time" placeholder="30">
           <button class="start-button" id="start_button">START GAME</button>
       </div>
       <aside class="left">
           <div class="info p1 icon col-5"></div>
-          <div class="info p1 p1-name col-5 hidden"></div>
+          <div class="info p1 name col-5 hidden"></div>
           <div class="stats p1 col-5">WINS</div>
           <div class="stats p1 col-5" id="p1_total_wins">0</div>
           <div class="stats p1 col-5">WIN RATE</div>
@@ -116,7 +118,7 @@
       </div>
       <div class="right">
           <div class="info p2 icon col-5"></div>
-          <div class="info p2 p2-name col-5 hidden"></div>
+          <div class="info p2 name col-5 hidden"></div>
           <div class="stats p2 col-5">WINS</div>
           <div class="stats p2 col-5" id="p2_total_wins">0</div>
           <div class="stats p2 col-5">WIN RATE</div>
@@ -124,7 +126,7 @@
       </div>
 
       <footer class="footer">
-          <div class="timer col-2">TIMER</div>
+          <div class="timer col-2"></div>
       </footer>
     <script src="./main.js"></script>
   </div>

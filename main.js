@@ -8,12 +8,12 @@ var startModal = document.querySelector(".start-modal");
 var startButton = document.querySelector("#start_button");
 var player1Input = document.querySelector(".player1-name");
 var player2Input = document.querySelector(".player2-name");
-var p1Name = document.querySelector(".p1-name")
-var p2Name = document.querySelector(".p2-name")
+var p1Name = document.querySelector(".p1.name")
+var p2Name = document.querySelector(".p2.name")
 var timerEle = document.querySelector(".timer");
 var winModal = document.querySelector('.win-modal')
 var winModalTxt = document.querySelector('.win-modal .info');
-var occupiedPiece = [];
+var maxTurnTimeEle = document.querySelector('.round-time');
 
 /*--------- Global Variables ---------*/
 var currentPlayer = 1;
@@ -21,11 +21,13 @@ var rowLength = 6;
 var colLength = 7;
 var maxDiagonal = rowLength < colLength ? rowLength : colLength;
 var gamePieces = [];
+var occupiedPiece = [];
 
+/*-------- Timer --------*/
 var timerId = null;
-
-var maxTurnTime = 30;
-var timerCountdown = maxTurnTime;
+var timerCountdown = null;
+var maxTurnTime = null;
+var delay = 1000;
 
 
 //GAME BOARD MATRIX
@@ -50,17 +52,10 @@ var player1Wins = 0;
 var player2Wins = 0;
 
 /*-------- Event Listeners --------*/
-gameContainer.addEventListener("click", addToken);
 toggleSound.addEventListener("click", toggleSound);
 restartButton.addEventListener("click", restartGame);
 pauseGame.addEventListener("click", pauseGame);
 startButton.addEventListener("click", startGame)
-
-/*-------- Set Elements --------*/
-timerEle.textContent = maxTurnTime;
-
-/*-------- Timer --------*/
-var timerId = setInterval(timer, 1000);
 
 /*-------- Function Calls --------*/
 // createSymbolicTokens();
@@ -71,8 +66,30 @@ function startGame() {
   gameContainer.classList.remove("hidden");
   p1Name.classList.remove("hidden");
   p2Name.classList.remove("hidden");
-  p1Name.textContent = player1Input.value;
-  p2Name.textContent = player2Input.value;
+
+  if (player1Input.value){
+    p1Name.textContent = player1Input.value;
+  } else {
+    p1Name.textContent = player1Input.placeholder;
+  }
+
+  if (player2Input.value) {
+    p2Name.textContent = player2Input.value;
+  } else {
+    p2Name.textContent = player2Input.placeholder;
+  }
+
+  if (maxTurnTimeEle.value){
+    maxTurnTime = parseInt(maxTurnTimeEle.value);
+  } else {
+    maxTurnTime = parseInt(maxTurnTimeEle.placeholder);
+  }
+
+  gameContainer.addEventListener("click", addToken);
+  if (!timerId) {
+    timerCountdown = maxTurnTime;
+    timer();
+  }
 }
 
 
@@ -80,9 +97,7 @@ function addToken(event) {
     if (!event.target.classList.contains('game-piece')) {
         return;
     }
-    if(!timerId) {
-      setInterval(timer, 1000)
-    }
+
     var currentCol = Math.floor((event.target.id) / 10);
     // console.log(currentRow);
     for (let rowIndex = 0; rowIndex < rowLength; rowIndex++) {
@@ -263,7 +278,8 @@ function restartGame() {
     currentPlayer = 1;
   }
   clearInterval(timerId);
-  timerId = setInterval(timer, 1000);
+  timerId = null;
+  timer();
   resetGameBoard();
 }
 
@@ -282,18 +298,21 @@ function restartGame() {
 // }
 
 function timer() {
-  timerEle.textContent = timerCountdown--;
-  if (timerCountdown === 0) {
-    console.log("Time is UP!");
-    clearInterval(timerId);
-    if (currentPlayer === 1) {
-      currentPlayer = 2;
-      timerCountdown = maxTurnTime;
-      timerId = setInterval(timer, 1000);
+  timerId = setTimeout(function(){
+    timerEle.textContent = timerCountdown--;
+    if (timerCountdown === 0) {
+      console.log("Time is UP!");
+      if (currentPlayer === 1) {
+        currentPlayer = 2;
+        timerCountdown = maxTurnTime;
+        timer();
+      } else {
+        currentPlayer = 1;
+        timerCountdown = maxTurnTime;
+        timer();
+      }
     } else {
-      currentPlayer = 1;
-      timerCountdown = maxTurnTime;
-      timerId = setInterval(timer, 1000);
+      timer();
     }
-  }
+  }, delay);
 }

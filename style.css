@@ -137,8 +137,6 @@ background-image: url(images/pause.png);
   justify-content: center;
 }
 
-
-
 .start-modal {
   background-image:  linear-gradient(to right, rgba(255, 255, 255, 0.6), rgb(255, 255, 255, 0.6)), url(./images/logo-start.png);
   background-position: center;
@@ -239,7 +237,8 @@ background-image: url(images/pause.png);
 
 
 }
-.p1-name, .p2-name {
+
+.name {
   font-size: 1rem;
   text-align: center;
   background-color: white;
@@ -276,6 +275,7 @@ background-image: url(images/pause.png);
   margin: auto;
 }
 
+
 .game-piece{
   display: flex;
   justify-content: center;
@@ -283,6 +283,11 @@ background-image: url(images/pause.png);
   width: 14%;
   margin: 2px;
   border-radius: 50%;
+  text-align: center;
+}
+
+input{
+  font-size: 1.5rem;
   text-align: center;
 }
 
