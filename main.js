@@ -15,6 +15,7 @@ var winModal = document.querySelector('.win-modal')
 var winModalTxt = document.querySelector('.win-modal .info');
 var maxTurnTimeEle = document.querySelector('.round-time');
 var gameBoardImage = document.querySelector('.game-board')
+var resetButton = document.querySelector('.reset-game');
 
 /*--------- Global Variables ---------*/
 var currentPlayer = 1;
@@ -23,7 +24,8 @@ var colLength = 7;
 var maxDiagonal = rowLength < colLength ? rowLength : colLength;
 var gamePieces = [];
 var occupiedPiece = [];
-
+var music = new Audio();
+music.src = './audio/music1.mp3';
 /*-------- Timer --------*/
 var timerId = null;
 var timerCountdown = null;
@@ -31,7 +33,7 @@ var maxTurnTime = null;
 var delay = 1000;
 
 
-//GAME BOARD MATRIX
+// GAME BOARD MATRIX
 var gameBoardArray = [
   [0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0],
@@ -53,11 +55,11 @@ var player1Wins = 0;
 var player2Wins = 0;
 
 /*-------- Event Listeners --------*/
-toggleSound.addEventListener("click", toggleSound);
+toggleSound.addEventListener("click", toggleS);
 restartButton.addEventListener("click", restartGame);
 pauseGame.addEventListener("click", pauseGame);
 startButton.addEventListener("click", startGame)
-
+resetButton.addEventListener("click", restartGame)
 /*-------- Function Calls --------*/
 // createSymbolicTokens();
 
@@ -68,6 +70,9 @@ function startGame() {
   p1Name.classList.remove("hidden");
   p2Name.classList.remove("hidden");
 
+  if(music.paused) {
+    music.play();
+  }
   if (player1Input.value){
     p1Name.textContent = player1Input.value;
   } else {
@@ -170,11 +175,11 @@ function checkLeftDiagonal(lastCol, lastRow){
     }
     col++;
     row++;
-  }
 
-  if (piecesCounter === 4) {
-    console.log('works')
-    return true;
+    if (piecesCounter === 4) {
+        console.log('works')
+        return true;
+    }
   }
 
   return false;
@@ -189,20 +194,19 @@ function checkRightDiagonal(lastCol, lastRow) {
     row--;
   }
 
-  while (col > 0 && row < rowLength) {
+  while (col >= 0 && row <= rowLength) {
     if (gameBoardArray[col][row] === currentPlayer) {
       piecesCounter++;
     } else {
       piecesCounter = 0;
     }
 
+    if (piecesCounter === 4) {
+      console.log('works')
+      return true;
+    }
     col--;
     row++;
-  }
-
-  if (piecesCounter === 4) {
-    console.log('works')
-    return true;
   }
 
   return false;
@@ -216,12 +220,12 @@ function checkVertical(lastCol){
       piecesCounter++;
     } else {
       piecesCounter = 0;
-  }
+    }
 
-  if(piecesCounter===4){
-    console.log('vworks');
-    return true;
-  }
+    if(piecesCounter===4){
+      console.log('vworks');
+      return true;
+    }
   }
 
   return false;
@@ -235,12 +239,12 @@ function checkHorizontal(lastRow) {
       piecesCounter++;
     } else {
       piecesCounter = 0;
-  }
+    }
 
-  if (piecesCounter === 4) {
-    console.log('hworks')
-    return true;
-  }
+    if (piecesCounter === 4) {
+      console.log('hworks')
+      return true;
+    }
   }
 
   return false;
@@ -266,19 +270,17 @@ function displayWin(){
   gameBoardImage.classList.add('hidden');
   winModal.classList.remove('hidden');
   winModalTxt.textContent = `Player ${currentPlayer} won!`
+  gameContainer.className = "game-container hidden"
 }
 
 function restartGame() {
   occupiedPiece = document.querySelectorAll('.token');
+  startModal.classList.remove('hidden');
+  gameContainer.classList.add('hidden');
   for (let i = 0; i < occupiedPiece.length; i++) {
     occupiedPiece[i].className = 'game-piece';
   }
   winModal.classList.add('hidden');
-  if (currentPlayer === 1) {
-    currentPlayer = 2;
-  } else {
-    currentPlayer = 1;
-  }
   clearInterval(timerId);
   timerId = null;
   timer();
@@ -286,9 +288,9 @@ function restartGame() {
   gameBoardImage.classList.remove('hidden');
 }
 
-// function toggleSound(){
-
-// }
+function toggleS() {
+  music.muted = !music.muted
+}
 
 // function pauseGame(){
 
