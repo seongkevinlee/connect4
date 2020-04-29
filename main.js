@@ -46,28 +46,25 @@ pauseGame.addEventListener("click", pauseGame);
 
 /*-------- Function Declarations --------*/
 function addToken(event) {
-    console.log(event)
-
     if (!event.target.classList.contains('game-piece')) {
         return;
     }
     var currentCol = Math.floor((event.target.id) / 10);
     // console.log(currentRow);
     for (let rowIndex = 0; rowIndex < rowLength; rowIndex++) {
-        console.log(`${currentCol}${rowIndex}`)
         var currentDiv = document.getElementById(`${currentCol}${rowIndex}`);
         if (currentDiv.classList.contains('game-piece')) {
-            if (!currentPlayer) {
+            if (currentPlayer === 1) {
                 currentDiv.className = ('p1 token');
-                gamePieces[`${currentCol}`][`${rowIndex}`] = 1;
+                gameBoardArray[currentCol][rowIndex] = 1;
                 checkWin(currentDiv)    //lastPlace
-                currentPlayer = !currentPlayer;
+                currentPlayer = 2;
                 return;
             } else {
                 currentDiv.className = ('p2 token');
-                gamePieces[`${currentCol}`][`${rowIndex}`] = 2;
+                gameBoardArray[currentCol][rowIndex] = 2;
                 checkWin(currentDiv)
-                currentPlayer = !currentPlayer;
+                currentPlayer = 1;
                 return;
             }
         }
@@ -76,10 +73,9 @@ function addToken(event) {
 
 function checkWin(lastPlace) {
 
-    var currentRow = Number(lastPlace.id) % 10;
-    var currentCol = Math.floor(lastPlace.id) /10;
+    var currentCol = lastPlace.id % 10;
+    var currentRow = Math.floor(lastPlace.id /10);
     var numInARow = 0;
-    console.log('current Row:', currentRow)
   checkHorizontal(currentRow);
     //END HORIZONTAL
   checkVertical(currentCol);
@@ -145,6 +141,7 @@ function checkVertical(lastCol){
   }
 
   if(piecesCounter===4){
+    console.log('vworks');
     return true;
   }
 
@@ -161,6 +158,7 @@ function checkHorizontal(lastRow) {
   }
 
   if (piecesCounter === 4) {
+    console.log('hworks')
     return true;
   }
 
