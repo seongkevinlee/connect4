@@ -2,8 +2,11 @@
 var gameContainer = document.querySelector(".game-container");
 var rows = document.querySelectorAll(".row");
 var toggleSound = document.querySelector(".toggle-sound");
-var restartGame = document.querySelector(".restart-game");
+var restartButton = document.querySelector(".win-button");
 var pauseGame = document.querySelector(".pause-game");
+var winModal = document.querySelector('.win-modal')
+var winModalTxt = document.querySelector('.win-modal .info');
+
 
 /*-------- Global Variables --------*/
 var currentPlayer = 1;
@@ -11,6 +14,7 @@ var rowLength = 6;
 var colLength = 7;
 var maxDiagonal = rowLength < colLength ? rowLength : colLength;
 var gamePieces = [];
+var occupiedPiece = {};
 
 //GAME BOARD MATRIX
 var gameBoardArray = [
@@ -36,7 +40,7 @@ var player2Wins = 0;
 /*-------- Event Listeners --------*/
 gameContainer.addEventListener("click", addToken);
 toggleSound.addEventListener("click", toggleSound);
-restartGame.addEventListener("click", restartGame);
+restartButton.addEventListener("click", restartGame);
 pauseGame.addEventListener("click", pauseGame);
 
 /*-------- Function Calls --------*/
@@ -77,18 +81,22 @@ function checkWin(lastPlace) {
   console.log('current Row:', currentRow)
 
   if (checkHorizontal(currentRow)) {
+    displayWin()
     return true;
   }
 
   if (checkVertical(currentCol)) {
+    displayWin()
     return true;
   }
 
   if (checkLeftDiagonal(currentCol, currentRow)) {
+    displayWin()
     return true;
   }
 
   if (checkRightDiagonal(currentCol, currentRow)) {
+    displayWin()
     return true;
   }
 
@@ -117,6 +125,7 @@ function checkLeftDiagonal(lastCol, lastRow){
   }
 
   if (piecesCounter === 4) {
+    console.log('works')
     return true;
   }
 
@@ -144,6 +153,7 @@ function checkRightDiagonal(lastCol, lastRow) {
   }
 
   if (piecesCounter === 4) {
+    console.log('works')
     return true;
   }
 
@@ -202,11 +212,16 @@ function createSymbolicTokens(){
   }
 }
 
-// function toggleSound(){
-
-// }
+function displayWin(){
+  winModal.classList.remove('hidden');
+  winModalTxt.textContent = `Player ${currentPlayer} won!`
+}
 
 // function restartGame(){
+// }
+
+
+// function toggleSound(){
 
 // }
 
