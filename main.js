@@ -4,9 +4,11 @@ var rows = document.querySelectorAll(".row");
 var toggleSound = document.querySelector(".toggle-sound");
 var restartButton = document.querySelector(".win-button");
 var pauseGame = document.querySelector(".pause-game");
+var timerEle = document.querySelector(".timer");
 var winModal = document.querySelector('.win-modal')
 var winModalTxt = document.querySelector('.win-modal .info');
 var occupiedPiece = [];
+
 
 /*-------- Global Variables --------*/
 var currentPlayer = 1;
@@ -14,6 +16,8 @@ var rowLength = 6;
 var colLength = 7;
 var maxDiagonal = rowLength < colLength ? rowLength : colLength;
 var gamePieces = [];
+var maxTurnTime = 30;
+var timerCountdown = maxTurnTime;
 
 //GAME BOARD MATRIX
 var gameBoardArray = [
@@ -42,10 +46,14 @@ toggleSound.addEventListener("click", toggleSound);
 restartButton.addEventListener("click", restartGame);
 pauseGame.addEventListener("click", pauseGame);
 
+/*-------- Set Elements --------*/
+timerEle.textContent = maxTurnTime;
+
+/*-------- Timer --------*/
+var timerId = setInterval(timer, 1000);
+
 /*-------- Function Calls --------*/
 // createSymbolicTokens();
-
-
 
 /*-------- Function Declarations --------*/
 function addToken(event) {
@@ -62,12 +70,14 @@ function addToken(event) {
                 gameBoardArray[currentCol][rowIndex] = 1;
                 checkWin(currentDiv)    //lastPlace
                 currentPlayer = 2;
+              timerCountdown = maxTurnTime;
                 return;
             } else {
                 currentDiv.className = ('p2 token');
                 gameBoardArray[currentCol][rowIndex] = 2;
                 checkWin(currentDiv)
                 currentPlayer = 1;
+                timerCountdown = maxTurnTime;
                 return;
             }
         }
@@ -238,3 +248,20 @@ function restartGame(){
 
 //   return unclaimed;
 // }
+
+function timer() {
+  timerEle.textContent = timerCountdown--;
+  if (timerCountdown === 0) {
+    console.log("Time is UP!");
+    clearInterval(timerId);
+    if (currentPlayer === 1) {
+      currentPlayer = 2;
+      timerCountdown = maxTurnTime;
+      timerId = setInterval(timer, 1000);
+    } else {
+      currentPlayer = 1;
+      timerCountdown = maxTurnTime;
+      timerId = setInterval(timer, 1000);
+    }
+  }
+}
