@@ -77,7 +77,7 @@ restartButton.addEventListener("click", restartGame);
 pauseButton.addEventListener("click", pauseGame);
 startButton.addEventListener("click", startGame)
 // Control panel button
-resetButton.addEventListener("click", function(){restartGame(currentPlayer)})
+resetButton.addEventListener("click", function () { restartGame(currentPlayer) })
 /*-------- Function Calls --------*/
 // createSymbolicTokens();
 
@@ -94,11 +94,11 @@ function startGame() {
     }
   }
 
-  if(music.paused) {
+  if (music.paused) {
     music.play();
     music.volume = 0.2;
   }
-  if (player1Input.value){
+  if (player1Input.value) {
     p1Name.textContent = player1Input.value;
   } else {
     p1Name.textContent = player1Input.placeholder;
@@ -110,7 +110,7 @@ function startGame() {
     p2Name.textContent = player2Input.placeholder;
   }
 
-  if (maxTurnTimeEle.value){
+  if (maxTurnTimeEle.value) {
     maxTurnTime = parseInt(maxTurnTimeEle.value);
   } else {
     maxTurnTime = parseInt(maxTurnTimeEle.placeholder);
@@ -124,60 +124,39 @@ function startGame() {
 }
 
 function addToken(event) {
-    if (!event.target.classList.contains('game-piece')) {
-        return;
+  if (!event.target.classList.contains('game-piece')) {
+    return;
+  }
+  var otherPlayer = (currentPlayer === 1) ? 2 : 1
+  var currentCol = Math.floor((event.target.id) / 10);
+  for (let rowIndex = 0; rowIndex < rowLength; rowIndex++) {
+    var currentDiv = document.getElementById(`${currentCol}${rowIndex}`);
+    if (currentDiv.classList.contains('game-piece')) {
+      currentDiv.className = (`p${currentPlayer} token`);
+      gameBoardArray[currentCol][rowIndex] = currentPlayer;
+      if (checkWin(currentDiv)) {
+        setTimeout(function () { displayWin(otherPlayer) }, 1500);
+        gameContainer.removeEventListener("click", addToken);
+        player1Wins++;
+        gamesPlayed++;
+        clearTimeout(timerId);
+        timerId = null;
+      } else {
+        currentPlayer = otherPlayer;
+      }
+      timerCountdown = maxTurnTime;
+      rounds++;
+      availableGamePieces--;
+      updateStats();
+      return;
     }
+  }
 
-    var currentCol = Math.floor((event.target.id) / 10);
-    // console.log(currentRow);
-    for (let rowIndex = 0; rowIndex < rowLength; rowIndex++) {
-        var currentDiv = document.getElementById(`${currentCol}${rowIndex}`);
-        if (currentDiv.classList.contains('game-piece')) {
-            if (currentPlayer === 1) {
-                currentDiv.className = ('p1 token');
-                gameBoardArray[currentCol][rowIndex] = 1;
-                if(checkWin(currentDiv)){
-                  setTimeout(function () { displayWin(2) }, 1500);
-                  gameContainer.removeEventListener("click", addToken);
-                  player1Wins++;
-                  gamesPlayed++;
-                  clearTimeout(timerId);
-                  timerId = null;
-                } else {
-                  currentPlayer = 2;
-                }
-                timerCountdown = maxTurnTime;
-                rounds++;
-                availableGamePieces--;
-                updateStats();
-                return;
-            } else {
-                currentDiv.className = ('p2 token');
-                gameBoardArray[currentCol][rowIndex] = 2;
-                if (checkWin(currentDiv)) {
-                  setTimeout(function(){displayWin(1)}, 1500);
-                  gameContainer.removeEventListener("click", addToken);
-                  player2Wins++;
-                  gamesPlayed++;
-                  clearTimeout(timerId);
-                  timerId = null;
-                } else {
-                  currentPlayer = 1;
-                }
-                timerCountdown = maxTurnTime;
-                rounds++;
-                availableGamePieces--;
-                updateStats();
-                return;
-            }
-        }
-    }
 }
 
 function checkWin(lastPlace) {
   var currentRow = Number(lastPlace.id) % 10;
   var currentCol = Math.floor(lastPlace.id / 10);
-  console.log('current Row:', currentRow)
 
   if (checkHorizontal(currentRow)) {
     return true;
@@ -202,19 +181,19 @@ function checkWin(lastPlace) {
   return false;
 }
 
-function checkTie(){
-  if (!availableGamePieces){
+function checkTie() {
+  if (!availableGamePieces) {
     return true;
   }
   return false;
 }
 
-function checkLeftDiagonal(lastCol, lastRow){
+function checkLeftDiagonal(lastCol, lastRow) {
   let piecesCounter = 0;
   let col = lastCol;
   let row = lastRow;
-  let smallerNum = lastCol<lastRow ? lastCol : lastRow;
-  while(smallerNum>0){
+  let smallerNum = lastCol < lastRow ? lastCol : lastRow;
+  while (smallerNum > 0) {
     col--;
     row--;
     smallerNum--;
@@ -230,8 +209,7 @@ function checkLeftDiagonal(lastCol, lastRow){
     row++;
 
     if (piecesCounter === 4) {
-        console.log('works')
-        return true;
+      return true;
     }
   }
 
@@ -255,7 +233,6 @@ function checkRightDiagonal(lastCol, lastRow) {
     }
 
     if (piecesCounter === 4) {
-      console.log('works')
       return true;
     }
     col--;
@@ -266,17 +243,16 @@ function checkRightDiagonal(lastCol, lastRow) {
 }
 
 // expect to get an array
-function checkVertical(lastCol){
+function checkVertical(lastCol) {
   let piecesCounter = 0;
-  for (let row = 0; row < rowLength; row++){
-    if (gameBoardArray[lastCol][row]===currentPlayer){
+  for (let row = 0; row < rowLength; row++) {
+    if (gameBoardArray[lastCol][row] === currentPlayer) {
       piecesCounter++;
     } else {
       piecesCounter = 0;
     }
 
-    if(piecesCounter===4){
-      console.log('vworks');
+    if (piecesCounter === 4) {
       return true;
     }
   }
@@ -295,7 +271,6 @@ function checkHorizontal(lastRow) {
     }
 
     if (piecesCounter === 4) {
-      console.log('hworks')
       return true;
     }
   }
@@ -303,7 +278,7 @@ function checkHorizontal(lastRow) {
   return false;
 }
 
-function resetGameBoard(){
+function resetGameBoard() {
 
   gameBoardArray = [];
 
@@ -312,17 +287,17 @@ function resetGameBoard(){
   }
 
   // creates a game-piece of 0 to indicate the spot is empty
-  for (let col = 0; col < colLength; col++){
-    for (let row = 0; row < rowLength; row++){
+  for (let col = 0; col < colLength; col++) {
+    for (let row = 0; row < rowLength; row++) {
       gameBoardArray[col].push(0);
     }
   }
 }
 
-function updateStats(){
+function updateStats() {
   p1WinsEle.textContent = player1Wins;
   p2WinsEle.textContent = player2Wins;
-  if(gamesPlayed){
+  if (gamesPlayed) {
     p1WinPercent.textContent = `${Math.floor(100 * (player1Wins / gamesPlayed))}%`;
     p2WinPercent.textContent = `${Math.floor(100 * (player2Wins / gamesPlayed))}%`;
   }
@@ -330,7 +305,7 @@ function updateStats(){
   roundStats.textContent = `ROUND #: ${rounds}`;
 }
 
-function displayWin(){
+function displayWin() {
   gameBoardImage.classList.add('hidden');
   winModal.classList.remove('hidden');
   winModalTxt.textContent = `Player ${currentPlayer} won!`
@@ -356,8 +331,8 @@ function toggleS() {
   music.muted = !music.muted;
 }
 
-function pauseGame(){
-  if(timerId){
+function pauseGame() {
+  if (timerId) {
     gameContainer.removeEventListener('click', addToken);
     clearTimeout(timerId);
     timerId = null;
@@ -368,7 +343,7 @@ function pauseGame(){
 }
 
 function timer() {
-  timerId = setTimeout(function(){
+  timerId = setTimeout(function () {
     timerEle.textContent = timerCountdown--;
     if (timerCountdown === 0) {
       console.log("Time is UP!");
