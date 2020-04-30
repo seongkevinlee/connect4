@@ -4,11 +4,11 @@
 
 body{
   font-family: 'Marvel', sans-serif;
-  height: 650px;
+  height: 100%;
   width: 1250px;
   margin:auto;
   font-size: 2vmax;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.4), rgb(255, 255, 255, 0.6)), url(images/background.jpg);
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.4), rgb(255, 255, 255, 0.6)), url(images/modal-bg.png);
   background-size: cover;
   background-attachment: fixed;
   background-position:right top;
@@ -57,7 +57,7 @@ background-image: url(images/pause.png);
   display:flex;
   flex-Wrap: wrap;
   justify-content: space-between;
-  width:900px;
+  width:100%;
   margin: auto;
 }
 
@@ -69,7 +69,7 @@ background-image: url(images/pause.png);
   height: 503px;
 }
 
-.game-board-background {
+/* .game-board-background {
   background-image: url("./images/gameboardoverlay.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -77,7 +77,7 @@ background-image: url(images/pause.png);
   pointer-events: none;
   width: 667px;
   height: 500px;
-}
+} */
 
 
 
@@ -88,8 +88,8 @@ background-image: url(images/pause.png);
 }
 
 .header {
-  height: 85px;
-  width: 1250px;
+  height: 10rem;
+  width: 100%;
   display:flex;
   justify-content: space-around;
   border: 1px solid;
@@ -120,28 +120,35 @@ background-image: url(images/pause.png);
 }
 
 .start-modal {
-  background-image:  linear-gradient(to right, rgba(255, 255, 255, 0.8), rgb(255, 255, 255, 0.8)), url(./images/logo-start.png);
-  background-position:  -67px 195px;
-  background-size: 800px 330px;
+  background-image:  linear-gradient(to right, rgba(255, 255, 255, 0.5), rgb(255, 255, 255, 0.5)), url(./images/modal-bg.png);
+  background-position:  center;
+  background-size: contain;
   background-repeat: no-repeat;
-  width: 668px;
-  height: 495px;
+  width: 100%;
+  height: 100%;
   background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  top:335px;
+  top:50%;
   left: 50%;
   position: fixed;
   transform: translate(-50%, -50%);
   border-radius: 7px;
   font-family: 'Marvel', sans-serif;
 }
-.start-modal > h4 {
-  font-size: 2rem;
-  margin-block-start: 0rem;
-  margin-block-end: 2rem;
+.enter-name {
+  width: 25%;
+  height: 8%;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+.choose-char {
+  width: 31%;
+  height: 8%;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 .name-inputs {
   color: black;
@@ -162,8 +169,8 @@ background-image: url(images/pause.png);
   text-align: center;
   border-radius: 7px;
   height: 15%;
-  width: 25%;
-  font-size: 1.8rem;
+  width: 14%;
+  font-size: 85%;
   opacity: .8;
 }
 .time {
@@ -173,6 +180,68 @@ background-image: url(images/pause.png);
   opacity: .8;
   width: 50px;
 }
+
+.character-select{
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.charbox {
+  border: solid #000;
+  border-width: 1px;
+  width: 116px;
+  height: 83px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+#bowser {
+  background-image: url("./images/character_select/bowser.jpg");
+}
+#cfalcon {
+  background-image: url("./images/character_select/captain\ falcon.jpg");
+}
+#cloud {
+  background-image: url("./images/character_select/cloud.jpg");
+}
+#dk {
+  background-image: url("./images/character_select/dk.jpg");
+}
+#ink {
+  background-image: url("./images/character_select/inkling.jpg");
+}
+#kirby {
+  background-image: url("./images/character_select/kirby.jpg");
+}
+#link {
+  background-image: url("./images/character_select/link.jpg");
+}
+#luigi {
+  background-image: url("./images/character_select/luigi.jpg");
+}
+#meta {
+  background-image: url("./images/character_select/metaknight.jpg");
+}
+#pac {
+  background-image: url("./images/character_select/pacman.jpg");
+}
+#peach {
+  background-image: url("./images/character_select/peach.jpg");
+}
+#pika {
+  background-image: url("./images/character_select/pikachu.jpg");
+}
+#sonic {
+  background-image: url("./images/character_select/sonic.jpg");
+}
+#toon {
+  background-image: url("./images/character_select/toonlink.jpg");
+}
+#yoshi {
+  background-image: url("./images/character_select/yoshi.jpg");
+}
+
 
 .title {
   display: flex;
@@ -281,6 +350,10 @@ background-image: url(images/pause.png);
 
 
 .game-piece{
+  background-image: url("./images/smashicon.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   height: 100%;
