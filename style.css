@@ -1,9 +1,7 @@
 * {
   box-sizing: border-box;
 }
-html{
-  position: relative;
-}
+
 body{
   font-family: 'Marvel', sans-serif;
   height: 650px;
@@ -17,7 +15,6 @@ body{
   background-repeat: none;
 }
 .row > div {
-  /* background-color: white; */
   height: 100%;
   width: 14%;
   margin: 2px;
@@ -70,9 +67,9 @@ background-image: url(images/pause.png);
   justify-content: center;
   width: 658px;
   height: 503px;
-  /* background-color:blue; */
 }
-.game-board {
+
+.game-board-background {
   background-image: url("./images/gameboardoverlay.png");
   background-size: contain;
   background-repeat: no-repeat;
@@ -147,8 +144,6 @@ background-image: url(images/pause.png);
   margin-block-end: 2rem;
 }
 .name-inputs {
-  /* -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: black; */
   color: black;
   font-size: 2rem;
   width: 650px;
@@ -197,10 +192,7 @@ background-image: url(images/pause.png);
   margin: auto;
   text-align: left;
 }
-#p1_total_wins, #p2_total_wins,
-#p1_win_percent, #p2_win_percent {
 
-}
 .game-info {
   display: flex;
   flex-direction: column;
@@ -282,7 +274,6 @@ background-image: url(images/pause.png);
   width: 365px;
   height: 90px;
   background-color: goldenrod;
-  /* border: rebeccapurple 1px solid; */
   font-size: 2rem;
   border-radius: 7px;
   margin: auto;
