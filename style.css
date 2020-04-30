@@ -190,132 +190,57 @@ background-image: url(images/pause.png);
 .charbox {
   border: solid #000;
   border-width: 1px;
+  width: 116px;
+  height: 83px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 #bowser {
-  width: 116px;
-  height: 83px;
   background-image: url("./images/character_select/bowser.jpg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 #cfalcon {
-  width: 116px;
-  height: 83px;
   background-image: url("./images/character_select/captain\ falcon.jpg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 #cloud {
-  width: 116px;
-  height: 83px;
   background-image: url("./images/character_select/cloud.jpg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 #dk {
-  width: 116px;
-  height: 83px;
   background-image: url("./images/character_select/dk.jpg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 #ink {
-  width: 116px;
-  height: 83px;
   background-image: url("./images/character_select/inkling.jpg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 #kirby {
-  width: 116px;
-  height: 83px;
   background-image: url("./images/character_select/kirby.jpg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 #link {
-  width: 116px;
-  height: 83px;
   background-image: url("./images/character_select/link.jpg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 #luigi {
-  width: 116px;
-  height: 83px;
   background-image: url("./images/character_select/luigi.jpg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 #meta {
-  width: 116px;
-  height: 83px;
   background-image: url("./images/character_select/metaknight.jpg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 #pac {
-  width: 116px;
-  height: 83px;
   background-image: url("./images/character_select/pacman.jpg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 #peach {
-  width: 116px;
-  height: 83px;
   background-image: url("./images/character_select/peach.jpg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 #pika {
-  width: 116px;
-  height: 83px;
   background-image: url("./images/character_select/pikachu.jpg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 #sonic {
-  width: 116px;
-  height: 83px;
   background-image: url("./images/character_select/sonic.jpg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 #toon {
-  width: 116px;
-  height: 83px;
   background-image: url("./images/character_select/toonlink.jpg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 #yoshi {
-  width: 116px;
-  height: 83px;
   background-image: url("./images/character_select/yoshi.jpg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
-
-
-
-
-
 
 
 .title {
@@ -428,6 +353,7 @@ background-image: url(images/pause.png);
   background-image: url("./images/smashicon.png");
   background-position: center;
   background-size: contain;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   height: 100%;
