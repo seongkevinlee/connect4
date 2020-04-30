@@ -4,7 +4,7 @@ var gameContainer = document.querySelector(".game-container");
 var rows = document.querySelectorAll(".row");
 
 // Controls
-var toggleSound = document.querySelector(".toggle-sound");
+var toggleSoundEle = document.querySelector(".toggle-sound");
 var restartButton = document.querySelector(".win-button");
 var pauseButton = document.querySelector(".pause-game");
 var startButton = document.querySelector("#start_button");
@@ -29,15 +29,13 @@ var winModalTxt = document.querySelector('.win-modal .info');
 // Timer
 var timerEle = document.querySelector(".timer");
 var maxTurnTimeEle = document.querySelector('.round-time');
-var gameBoardImage = document.querySelector('.game-board')
+var gameBoardImage = document.querySelector('.game-board-background')
 var resetButton = document.querySelector('.reset-game');
 
 /*--------- Global Variables ---------*/
 var currentPlayer = 1;
 var rowLength = 6;
 var colLength = 7;
-var maxDiagonal = rowLength < colLength ? rowLength : colLength;
-var gamePieces = [];
 var occupiedPiece = [];
 var music = new Audio();
 music.src = './audio/music1.mp3';
@@ -72,14 +70,13 @@ var player1Wins = 0;
 var player2Wins = 0;
 
 /*-------- Event Listeners --------*/
-toggleSound.addEventListener("click", toggleS);
+toggleSoundEle.addEventListener("click", toggleSound);
 restartButton.addEventListener("click", restartGame);
 pauseButton.addEventListener("click", pauseGame);
 startButton.addEventListener("click", startGame)
 // Control panel button
 resetButton.addEventListener("click", function () { restartGame(currentPlayer) })
 /*-------- Function Calls --------*/
-// createSymbolicTokens();
 
 /*-------- Function Declarations --------*/
 function startGame() {
@@ -98,23 +95,12 @@ function startGame() {
     music.play();
     music.volume = 0.2;
   }
-  if (player1Input.value) {
-    p1Name.textContent = player1Input.value;
-  } else {
-    p1Name.textContent = player1Input.placeholder;
-  }
 
-  if (player2Input.value) {
-    p2Name.textContent = player2Input.value;
-  } else {
-    p2Name.textContent = player2Input.placeholder;
-  }
+  p1Name.textContent = player1Input.value || player1Input.placeholder;
 
-  if (maxTurnTimeEle.value) {
-    maxTurnTime = parseInt(maxTurnTimeEle.value);
-  } else {
-    maxTurnTime = parseInt(maxTurnTimeEle.placeholder);
-  }
+  p2Name.textContent = player2Input.value || player2Input.placeholder;
+
+  maxTurnTime = parseInt(maxTurnTimeEle.value) || parseInt(maxTurnTimeEle.placeholder);
 
   gameContainer.addEventListener("click", addToken);
   if (!timerId) {
@@ -152,6 +138,50 @@ function addToken(event) {
     }
   }
 
+    var currentCol = Math.floor((event.target.id) / 10);
+    // console.log(currentRow);
+    for (let rowIndex = 0; rowIndex < rowLength; rowIndex++) {
+        var currentDiv = document.getElementById(`${currentCol}${rowIndex}`);
+        if (currentDiv.classList.contains('game-piece')) {
+            if (currentPlayer === 1) {
+                currentDiv.className = (`p${currentPlayer} token`);
+                gameBoardArray[currentCol][rowIndex] = 1;
+                if(checkWin(currentDiv)){
+                  setTimeout(function () { displayWin(2) }, 1500);
+                  gameContainer.removeEventListener("click", addToken);
+                  player1Wins++;
+                  gamesPlayed++;
+                  clearTimeout(timerId);
+                  timerId = null;
+                } else {
+                  currentPlayer = 2;
+                }
+                timerCountdown = maxTurnTime;
+                rounds++;
+                availableGamePieces--;
+                updateStats();
+                return;
+            } else {
+              currentDiv.className = (`p${currentPlayer} token`);
+                gameBoardArray[currentCol][rowIndex] = 2;
+                if (checkWin(currentDiv)) {
+                  setTimeout(function(){displayWin(1)}, 1500);
+                  gameContainer.removeEventListener("click", addToken);
+                  player2Wins++;
+                  gamesPlayed++;
+                  clearTimeout(timerId);
+                  timerId = null;
+                } else {
+                  currentPlayer = 1;
+                }
+                timerCountdown = maxTurnTime;
+                rounds++;
+                availableGamePieces--;
+                updateStats();
+                return;
+            }
+        }
+    }
 }
 
 function checkWin(lastPlace) {
@@ -308,8 +338,12 @@ function updateStats() {
 function displayWin() {
   gameBoardImage.classList.add('hidden');
   winModal.classList.remove('hidden');
-  winModalTxt.textContent = `Player ${currentPlayer} won!`
-  gameContainer.className = "game-container hidden"
+  if (currentPlayer === 1){
+    winModalTxt.textContent = `Player ${player1Input.value || player1Input.placeholder} won!`;
+  } else {
+    winModalTxt.textContent = `Player ${player2Input.value || player2Input.placeholder} won!`;
+  }
+  gameContainer.className = "game-container hidden";
 }
 
 function restartGame(startingPlayer) {
@@ -327,7 +361,7 @@ function restartGame(startingPlayer) {
   gameBoardImage.classList.remove('hidden');
 }
 
-function toggleS() {
+function toggleSound() {
   music.muted = !music.muted;
 }
 
