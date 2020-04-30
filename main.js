@@ -71,11 +71,11 @@ var player2Wins = 0;
 
 /*-------- Event Listeners --------*/
 toggleSoundEle.addEventListener("click", toggleSound);
-restartButton.addEventListener("click", restartGame);
+restartButton.addEventListener("click", function(){restartGame(currentPlayer);});
 pauseButton.addEventListener("click", pauseGame);
 startButton.addEventListener("click", startGame)
 // Control panel button
-resetButton.addEventListener("click", function () { restartGame(currentPlayer) })
+resetButton.addEventListener("click", function(){restartGame(currentPlayer);});
 /*-------- Function Calls --------*/
 
 /*-------- Function Declarations --------*/
