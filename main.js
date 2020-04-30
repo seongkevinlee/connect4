@@ -1,7 +1,6 @@
 /*-------- Global Element Selectors --------*/
 // Game functionality
 var gameContainer = document.querySelector(".game-container");
-var rows = document.querySelectorAll(".row");
 
 // Controls
 var toggleSoundEle = document.querySelector(".toggle-sound");
@@ -34,6 +33,7 @@ var resetButton = document.querySelector('.reset-game');
 
 /*--------- Global Variables ---------*/
 var currentPlayer = 1;
+var otherPlayer = 2;
 var rowLength = 6;
 var colLength = 7;
 var occupiedPiece = [];
@@ -59,10 +59,6 @@ var gameBoardArray = [
   [0, 0, 0, 0, 0, 0]
 ];
 
-// Archives the token objects that have been placed on the board
-// Token object properties: IDs, colors,
-var tokensPlaced = [];
-
 // Stats
 var rounds = 0;
 var gamesPlayed = 0;
@@ -71,7 +67,7 @@ var player2Wins = 0;
 
 /*-------- Event Listeners --------*/
 toggleSoundEle.addEventListener("click", toggleSound);
-restartButton.addEventListener("click", function(){restartGame(currentPlayer);});
+restartButton.addEventListener("click", function(){restartGame(otherPlayer);});
 pauseButton.addEventListener("click", pauseGame);
 startButton.addEventListener("click", startGame)
 // Control panel button
@@ -113,7 +109,7 @@ function addToken(event) {
   if (!event.target.classList.contains('game-piece')) {
     return;
   }
-  var otherPlayer = (currentPlayer === 1) ? 2 : 1
+  otherPlayer = (currentPlayer === 1) ? 2 : 1
   var currentCol = Math.floor((event.target.id) / 10);
   for (let rowIndex = 0; rowIndex < rowLength; rowIndex++) {
     var currentDiv = document.getElementById(`${currentCol}${rowIndex}`);
@@ -122,7 +118,7 @@ function addToken(event) {
       gameBoardArray[currentCol][rowIndex] = currentPlayer;
       availableGamePieces--;
       if (checkWin(currentDiv)) {
-        setTimeout(function () { displayWin(otherPlayer) }, 1500);
+        setTimeout(function () { displayWin(currentPlayer) }, 1500);
         gameContainer.removeEventListener("click", addToken);
         player1Wins++;
         gamesPlayed++;
@@ -143,51 +139,6 @@ function addToken(event) {
       return;
     }
   }
-
-    var currentCol = Math.floor((event.target.id) / 10);
-    // console.log(currentRow);
-    for (let rowIndex = 0; rowIndex < rowLength; rowIndex++) {
-        var currentDiv = document.getElementById(`${currentCol}${rowIndex}`);
-        if (currentDiv.classList.contains('game-piece')) {
-            if (currentPlayer === 1) {
-                currentDiv.className = (`p${currentPlayer} token`);
-                gameBoardArray[currentCol][rowIndex] = 1;
-                if(checkWin(currentDiv)){
-                  setTimeout(function () { displayWin(2) }, 1500);
-                  gameContainer.removeEventListener("click", addToken);
-                  player1Wins++;
-                  gamesPlayed++;
-                  clearTimeout(timerId);
-                  timerId = null;
-                } else {
-                  currentPlayer = 2;
-                }
-                timerCountdown = maxTurnTime;
-                rounds++;
-                availableGamePieces--;
-                updateStats();
-                return;
-            } else {
-              currentDiv.className = (`p${currentPlayer} token`);
-                gameBoardArray[currentCol][rowIndex] = 2;
-                if (checkWin(currentDiv)) {
-                  setTimeout(function(){displayWin(1)}, 1500);
-                  gameContainer.removeEventListener("click", addToken);
-                  player2Wins++;
-                  gamesPlayed++;
-                  clearTimeout(timerId);
-                  timerId = null;
-                } else {
-                  currentPlayer = 1;
-                }
-                timerCountdown = maxTurnTime;
-                rounds++;
-                availableGamePieces--;
-                updateStats();
-                return;
-            }
-        }
-    }
 }
 
 function checkWin(lastPlace) {
@@ -340,11 +291,11 @@ function updateStats() {
 function displayWin(winner) {
   gameBoardImage.classList.add('hidden');
   winModal.classList.remove('hidden');
-  if (currentPlayer === 2) {
+  if (winner === 0) {
     winModalTxt.textContent = "Congratulations, this was an epic battle that resulted in a tie!";
-  } else if (currentPlayer === 1){
+  } else if (winner === 1){
     winModalTxt.textContent = `Player ${player1Input.value || player1Input.placeholder} won!`;
-  } else if (currentPlayer === 2){
+  } else if (winner === 2){
     winModalTxt.textContent = `Player ${player2Input.value || player2Input.placeholder} won!`;
   }
   gameContainer.className = "game-container hidden";
