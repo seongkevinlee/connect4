@@ -38,7 +38,7 @@ var rowLength = 6;
 var colLength = 7;
 var occupiedPiece = [];
 var music = new Audio();
-music.src = './audio/music1.mp3';
+music.src = './audio/battle.mp3';
 var availableGamePieces = 0;
 
 /*-------- Timer --------*/
