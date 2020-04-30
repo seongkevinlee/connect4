@@ -120,10 +120,17 @@ function addToken(event) {
     if (currentDiv.classList.contains('game-piece')) {
       currentDiv.className = (`p${currentPlayer} token`);
       gameBoardArray[currentCol][rowIndex] = currentPlayer;
+      availableGamePieces--;
       if (checkWin(currentDiv)) {
         setTimeout(function () { displayWin(otherPlayer) }, 1500);
         gameContainer.removeEventListener("click", addToken);
         player1Wins++;
+        gamesPlayed++;
+        clearTimeout(timerId);
+        timerId = null;
+      } else if(checkTie()){
+        setTimeout(function () { displayWin(0) }, 1500);
+        gameContainer.removeEventListener("click", addToken);
         gamesPlayed++;
         clearTimeout(timerId);
         timerId = null;
@@ -132,7 +139,6 @@ function addToken(event) {
       }
       timerCountdown = maxTurnTime;
       rounds++;
-      availableGamePieces--;
       updateStats();
       return;
     }
@@ -201,10 +207,6 @@ function checkWin(lastPlace) {
   }
 
   if (checkRightDiagonal(currentCol, currentRow)) {
-    return true;
-  }
-
-  if (checkTie()) {
     return true;
   }
 
@@ -335,12 +337,14 @@ function updateStats() {
   roundStats.textContent = `ROUND #: ${rounds}`;
 }
 
-function displayWin() {
+function displayWin(winner) {
   gameBoardImage.classList.add('hidden');
   winModal.classList.remove('hidden');
-  if (currentPlayer === 1){
+  if (currentPlayer === 2) {
+    winModalTxt.textContent = "Congratulations, this was an epic battle that resulted in a tie!";
+  } else if (currentPlayer === 1){
     winModalTxt.textContent = `Player ${player1Input.value || player1Input.placeholder} won!`;
-  } else {
+  } else if (currentPlayer === 2){
     winModalTxt.textContent = `Player ${player2Input.value || player2Input.placeholder} won!`;
   }
   gameContainer.className = "game-container hidden";
