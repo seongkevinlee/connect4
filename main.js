@@ -1,7 +1,6 @@
 /*-------- Global Element Selectors --------*/
 // Game functionality
 var gameContainer = document.querySelector(".game-container");
-var docHead = document.querySelector('head')
 // Controls
 var toggleSoundEle = document.querySelector(".toggle-sound");
 var restartButton = document.querySelector(".win-button");
@@ -37,9 +36,17 @@ var otherPlayer = 2;
 var rowLength = 6;
 var colLength = 7;
 var occupiedPiece = [];
-var music = new Audio();
-music.src = './audio/battle.mp3';
 var availableGamePieces = 0;
+
+/*--------- Audio ---------*/
+var music = new Audio();
+music.src = './audio/menu.mp3';
+var battleMusic = new Audio();
+battleMusic.src = './audio/battle.mp3';
+var tokenSound1 = new Audio();
+tokenSound1.src = './audio/boop.wav';
+var tokenSound2 = new Audio();
+tokenSound2.src = './audio/boing.wav';
 
 /*-------- Timer --------*/
 var timerId = null;
@@ -70,6 +77,7 @@ toggleSoundEle.addEventListener("click", toggleSound);
 restartButton.addEventListener("click", function(){restartGame(otherPlayer);});
 pauseButton.addEventListener("click", pauseGame);
 startButton.addEventListener("click", startGame)
+startModal.addEventListener('click', function(){music.play()})
 // Control panel button
 resetButton.addEventListener("click", function(){restartGame(currentPlayer);});
 /*-------- Function Calls --------*/
@@ -89,9 +97,12 @@ function startGame() {
     }
   }
 
-  if (music.paused) {
-    music.play();
-    music.volume = 0.2;
+  if (battleMusic.paused) {
+    battleMusic.play();
+    battleMusic.volume = 0.2;
+    battleMusic.currentTime = 0;
+    music.volume = 0;
+    music.paused = true;
   }
 
   p1Name.textContent = player1Input.value || player1Input.placeholder;
@@ -111,6 +122,7 @@ function addToken(event) {
   if (!event.target.classList.contains('game-piece')) {
     return;
   }
+  playSound(currentPlayer);
   otherPlayer = (currentPlayer === 1) ? 2 : 1
   var currentCol = Math.floor((event.target.id) / 10);
   for (let rowIndex = 0; rowIndex < rowLength; rowIndex++) {
@@ -279,6 +291,16 @@ function resetGameBoard() {
   }
 }
 
+function playSound(player){
+  if(player === 1){
+    tokenSound1.currentTime = 0;
+    tokenSound1.play();
+  } else {
+    tokenSound2.currentTime = 0;
+    tokenSound2.play();
+  }
+
+}
 function updateStats() {
   p1WinsEle.textContent = player1Wins;
   p2WinsEle.textContent = player2Wins;
@@ -318,10 +340,16 @@ function restartGame(startingPlayer) {
   gameBoardImage.classList.remove('hidden');
   var style = document.querySelector('style')
   style.textContent = " ";
+  music.play();
+  music.volume = 0.2;
+  music.currentTime = 0;
+  battleMusic.pause();
 }
 
 function toggleSound() {
   music.muted = !music.muted;
+  battleMusic.muted = !battleMusic.muted;
+  tokenSound.muted = !tokenSound.muted;
 }
 
 function pauseGame() {
