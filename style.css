@@ -13,6 +13,7 @@ body{
   background-attachment: fixed;
   background-position:right top;
   background-repeat: none;
+  cursor: url("./images/cursor.cur"), auto;
 }
 .row > div {
   height: 100%;
@@ -20,6 +21,10 @@ body{
   margin: 2px;
   border-radius: 50%;
   text-align: center;
+}
+
+label {
+  cursor: url("./images/cursor.cur"), auto;
 }
 
 .control-panel{
@@ -41,6 +46,7 @@ body{
   background-size: cover;
   height: 100%;
   width: 100%;
+  cursor: url("./images/cursor.cur"), auto;
 }
 .toggle-sound{
   background-image: url(images/sound.png);
@@ -125,6 +131,7 @@ background-image: url(images/pause.png);
   transform: translate(-50%, -50%);
   border-radius: 7px;
   font-family: 'Marvel', sans-serif;
+  cursor: url("./images/cursor.cur"), auto;
 }
 .enter-name {
   width: 25%;
@@ -160,6 +167,7 @@ background-image: url(images/pause.png);
   width: 14%;
   font-size: 85%;
   opacity: .8;
+  cursor: url("./images/cursor.cur"), auto;
 }
 .time {
   margin-top: 10px;
@@ -309,7 +317,8 @@ background-image: url(images/pause.png);
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
-  left: 0
+  left: 0;
+  cursor: url("./images/cursor.cur"), auto;
 }
 .win-button{
   font-family: 'Marvel', sans-serif;
@@ -321,6 +330,7 @@ background-image: url(images/pause.png);
   font-size: 2rem;
   color: black;
   margin: auto;
+  cursor: url("./images/cursor.cur"), auto;
 }
 
 .modal-txt{
