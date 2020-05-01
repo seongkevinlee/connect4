@@ -188,7 +188,7 @@ background-image: url(images/pause.png);
   background-image: url("./images/character_select/bowser.jpg");
 }
 #cfalcon {
-  background-image: url("./images/character_select/captain\ falcon.jpg");
+  background-image: url("./images/character_select/cfalcon.jpg");
 }
 #cloud {
   background-image: url("./images/character_select/cloud.jpg");
@@ -197,7 +197,7 @@ background-image: url(images/pause.png);
   background-image: url("./images/character_select/dk.jpg");
 }
 #ink {
-  background-image: url("./images/character_select/inkling.jpg");
+  background-image: url("./images/character_select/ink.jpg");
 }
 #kirby {
   background-image: url("./images/character_select/kirby.jpg");
@@ -209,22 +209,22 @@ background-image: url(images/pause.png);
   background-image: url("./images/character_select/luigi.jpg");
 }
 #meta {
-  background-image: url("./images/character_select/metaknight.jpg");
+  background-image: url("./images/character_select/meta.jpg");
 }
 #pac {
-  background-image: url("./images/character_select/pacman.jpg");
+  background-image: url("./images/character_select/pac.jpg");
 }
 #peach {
   background-image: url("./images/character_select/peach.jpg");
 }
 #pika {
-  background-image: url("./images/character_select/pikachu.jpg");
+  background-image: url("./images/character_select/pika.jpg");
 }
 #sonic {
   background-image: url("./images/character_select/sonic.jpg");
 }
 #toon {
-  background-image: url("./images/character_select/toonlink.jpg");
+  background-image: url("./images/character_select/toon.jpg");
 }
 #yoshi {
   background-image: url("./images/character_select/yoshi.jpg");
@@ -262,7 +262,7 @@ background-image: url(images/pause.png);
 }
 .p1.icon {
   height: 80px;
-  background-image: url(./images/gamepiece-red.png);
+  background-image: url(./images/tokens/bowser.png);
   background-position: center;
   background-size: cover;
   margin-top: 10px;
@@ -270,13 +270,11 @@ background-image: url(images/pause.png);
 }
 .p2.icon {
   height: 80px;
-  background-image: url(./images/gamepiece-yellow.png);
+  background-image: url(./images/tokens/kirby.png);
   background-position: center;
   background-size: cover;
   margin-top: 10px;
   margin-bottom: 15px;
-
-
 }
 
 .name {
@@ -357,14 +355,12 @@ input{
 }
 
 .p1.token{
-  background-image: url(./images/gamepiece-red.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
 .p2.token{
-  background-image: url(./images/gamepiece-yellow.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
