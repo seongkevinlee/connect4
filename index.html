@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>Connect 4 - Team Sharknado</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="backgrounds.css">
     <link rel="stylesheet" href="grid.css">
     <link href="https://fonts.googleapis.com/css2?family=Marvel:wght@700&display=swap" rel="stylesheet">
-    <style id="style"></style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -68,12 +68,19 @@
           <button class="start-button" id="start_button">START GAME</button>
       </div>
       <aside class="left">
-          <div class="info p1 icon col-5"></div>
-          <div class="info p1 name col-5 hidden"></div>
-          <div class="stats p1 col-5">WINS</div>
-          <div class="stats p1 col-5" id="p1_total_wins">0</div>
-          <div class="stats p1 col-5">WIN RATE</div>
-          <div class="stats p1 col-5" id="p1_win_percent">0%</div>
+        <div class="stats-icon p1">
+            <div class="stats-and-info">
+                <div class="stats p1 col-5">WINS</div>
+                <div class="stats p1 col-5" id="p1_total_wins">0</div>
+                <div class="stats p1 col-5">WIN RATE</div>
+                <div class="stats p1 col-5" id="p1_win_percent">0%</div>
+            </div>
+            <div class="name-icon col-3">
+                <div class="info p1 name col-5 hidden"></div>
+                <div class="info p1 icon col-7"></div>
+            </div>
+        </div>
+        <div class="p1 char col-7"></div>
       </aside>
       <div class="game-container hidden">
           <div class="game-board-background"></div>
@@ -134,12 +141,19 @@
 
       </div>
       <div class="right">
-          <div class="info p2 icon col-5"></div>
-          <div class="info p2 name col-5 hidden"></div>
-          <div class="stats p2 col-5">WINS</div>
-          <div class="stats p2 col-5" id="p2_total_wins">0</div>
-          <div class="stats p2 col-5">WIN RATE</div>
-          <div class="stats p2 col-5" id="p2_win_percent">0%</div>
+        <div class="stats-icon p2">
+            <div class="name-icon col-3">
+                <div class="info p2 name col-5 hidden"></div>
+                <div class="info p2 icon col-7"></div>
+            </div>
+            <div class="stats-and-info">
+                <div class="stats p2 col-5">WINS</div>
+                <div class="stats p2 col-5" id="p2_total_wins">0</div>
+                <div class="stats p2 col-5">WIN RATE</div>
+                <div class="stats p2 col-5" id="p2_win_percent">0%</div>
+            </div>
+        </div>
+        <div class="p2 char col-7"></div>
       </div>
 
       <footer class="footer">

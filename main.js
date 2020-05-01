@@ -18,16 +18,21 @@ var p1WinPercent = document.getElementById("p1_win_percent");
 var p2WinPercent = document.getElementById("p2_win_percent");
 var totalGames = document.getElementById("games-played");
 var roundStats = document.getElementById("round");
-var style = document.getElementById('style');
+var characterSelect = document.querySelector('.character-select');
+var p1CharImgEle = document.querySelector(".p1.char");
+var p1GamePieceEle = document.querySelector(".p1.icon");
+var p2CharImgEle = document.querySelector(".p2.char");
+var p2GamePieceEle = document.querySelector(".p2.icon");
+
 // models
 var startModal = document.querySelector(".start-modal");
-var winModal = document.querySelector('.win-modal')
+var winModal = document.querySelector('.win-modal');
 var winModalTxt = document.querySelector('.win-modal .info');
 
 // Timer
 var timerEle = document.querySelector(".timer");
 var maxTurnTimeEle = document.querySelector('.round-time');
-var gameBoardImage = document.querySelector('.game-board-background')
+var gameBoardImage = document.querySelector('.game-board-background');
 var resetButton = document.querySelector('.reset-game');
 
 /*--------- Global Variables ---------*/
@@ -37,6 +42,8 @@ var rowLength = 6;
 var colLength = 7;
 var occupiedPiece = [];
 var availableGamePieces = 0;
+var p1CharacterId;
+var p2CharacterId;
 
 /*--------- Audio ---------*/
 var music = new Audio();
@@ -53,7 +60,6 @@ var timerId = null;
 var timerCountdown = null;
 var maxTurnTime = null;
 var delay = 1000;
-
 
 // GAME BOARD MATRIX
 var gameBoardArray = [
@@ -76,11 +82,14 @@ var player2Wins = 0;
 toggleSoundEle.addEventListener("click", toggleSound);
 restartButton.addEventListener("click", function(){restartGame(otherPlayer);});
 pauseButton.addEventListener("click", pauseGame);
-startButton.addEventListener("click", startGame)
+startButton.addEventListener("click", startGame);
 startModal.addEventListener('click', function(){music.play()})
 // Control panel button
 resetButton.addEventListener("click", function(){restartGame(currentPlayer);});
+characterSelect.addEventListener('click', selectCharacter);
+
 /*-------- Function Calls --------*/
+menuMusicVolume();
 
 /*-------- Function Declarations --------*/
 function startGame() {
@@ -89,8 +98,11 @@ function startGame() {
   p1Name.classList.remove("hidden");
   p2Name.classList.remove("hidden");
 
-  style.textContent = `.p1.token,.p1.icon{background-image: url(./images/tokens/${p1CharacterId}.png);}
-  .p2.token,.p2.icon{background-image: url(./images/tokens/${p2CharacterId}.png);}`
+  p1CharImgEle.setAttribute("id", p1CharacterId);
+  p2CharImgEle.setAttribute("id", p2CharacterId);
+  p1GamePieceEle.setAttribute("id", p1CharacterId);
+  p2GamePieceEle.setAttribute("id", p2CharacterId);
+
   for (let col = 0; col < gameBoardArray.length; col++) {
     for (let row = 0; row < gameBoardArray[col].length; row++) {
       availableGamePieces++;
@@ -123,12 +135,13 @@ function addToken(event) {
     return;
   }
   playSound(currentPlayer);
+  let currentId = currentPlayer === 1 ? p1CharacterId : p2CharacterId;
   otherPlayer = (currentPlayer === 1) ? 2 : 1
   var currentCol = Math.floor((event.target.id) / 10);
   for (let rowIndex = 0; rowIndex < rowLength; rowIndex++) {
     var currentDiv = document.getElementById(`${currentCol}${rowIndex}`);
     if (currentDiv.classList.contains('game-piece')) {
-      currentDiv.className = (`p${currentPlayer} token`);
+      currentDiv.className = (`p${currentPlayer} token ${currentId}`);
       gameBoardArray[currentCol][rowIndex] = currentPlayer;
       availableGamePieces--;
       if (checkWin(currentDiv)) {
@@ -338,8 +351,6 @@ function restartGame(startingPlayer) {
   resetGameBoard();
   currentPlayer = startingPlayer;
   gameBoardImage.classList.remove('hidden');
-  var style = document.querySelector('style')
-  style.textContent = " ";
   music.play();
   music.volume = 0.2;
   music.currentTime = 0;
@@ -384,12 +395,6 @@ function timer() {
   }, delay);
 }
 
-var characterSelect = document.querySelector('.character-select');
-characterSelect.addEventListener('click', selectCharacter);
-var p1CharacterId;
-var p2CharacterId;
-
-
 function selectCharacter(event) {
   if(!event || !event.target.classList.contains('charbox')) {
     return
@@ -403,7 +408,6 @@ function selectCharacter(event) {
   }
 }
 
-
 function highlightCharacter(currentPlayer, character) {
   if (p1CharacterId && currentPlayer === 2) {
     let p1PreviousEle = document.getElementById(p1CharacterId);
@@ -414,4 +418,8 @@ function highlightCharacter(currentPlayer, character) {
   }
   let charEle = document.getElementById(character);
   charEle.classList.add(`highlight`, `p${currentPlayer}`);
+}
+
+function menuMusicVolume(){
+  music.volume = 0.2;
 }
