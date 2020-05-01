@@ -262,7 +262,6 @@ background-image: url(images/pause.png);
 }
 .p1.icon {
   height: 80px;
-  background-image: url(./images/tokens/bowser.png);
   background-position: center;
   background-size: cover;
   margin-top: 10px;
@@ -270,7 +269,6 @@ background-image: url(images/pause.png);
 }
 .p2.icon {
   height: 80px;
-  background-image: url(./images/tokens/kirby.png);
   background-position: center;
   background-size: cover;
   margin-top: 10px;
