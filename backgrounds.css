@@ -1,0 +1,140 @@
+/* charbox classe will show in the select char menu */
+.charbox#bowser {
+  background-image: url("./images/character_select/bowser.jpg");
+}
+.charbox#cfalcon {
+  background-image: url("./images/character_select/cfalcon.jpg");
+}
+.charbox#cloud {
+  background-image: url("./images/character_select/cloud.jpg");
+}
+.charbox#dk {
+  background-image: url("./images/character_select/dk.jpg");
+}
+.charbox#ink {
+  background-image: url("./images/character_select/ink.jpg");
+}
+.charbox#kirby {
+  background-image: url("./images/character_select/kirby.jpg");
+}
+.charbox#link {
+  background-image: url("./images/character_select/link.jpg");
+}
+.charbox#luigi {
+  background-image: url("./images/character_select/luigi.jpg");
+}
+.charbox#meta {
+  background-image: url("./images/character_select/meta.jpg");
+}
+.charbox#pac {
+  background-image: url("./images/character_select/pac.jpg");
+}
+.charbox#peach {
+  background-image: url("./images/character_select/peach.jpg");
+}
+.charbox#pika {
+  background-image: url("./images/character_select/pika.jpg");
+}
+.charbox#sonic {
+  background-image: url("./images/character_select/sonic.jpg");
+}
+.charbox#toon {
+  background-image: url("./images/character_select/toon.jpg");
+}
+.charbox#yoshi {
+  background-image: url("./images/character_select/yoshi.jpg");
+}
+
+/* char classe will show as a big img on the selected char */
+.char#bowser {
+  background-image: url("./images/characters/bowser.png");
+}
+.char#cfalcon {
+  background-image: url("./images/characters/cfalcon.png");
+}
+.char#cloud {
+  background-image: url("./images/characters/cloud.png");
+}
+.char#dk {
+  background-image: url("./images/characters/dk.png");
+}
+.char#ink {
+  background-image: url("./images/characters/ink.png");
+}
+.char#kirby {
+  background-image: url("./images/characters/kirby.png");
+}
+.char#link {
+  background-image: url("./images/characters/link.png");
+}
+.char#luigi {
+  background-image: url("./images/characters/luigi.png");
+}
+.char#meta {
+  background-image: url("./images/characters/meta.png");
+}
+.char#pac {
+  background-image: url("./images/characters/pac.png");
+}
+.char#peach {
+  background-image: url("./images/characters/peach.png");
+}
+.char#pika {
+  background-image: url("./images/characters/pika.png");
+}
+.char#sonic {
+  background-image: url("./images/characters/sonic.png");
+}
+.char#toon {
+  background-image: url("./images/characters/toon.png");
+}
+.char#yoshi {
+  background-image: url("./images/characters/yoshi.png");
+}
+
+/* char classe will show as the token being placed */
+.icon#bowser, .token.bowser {
+  background-image: url("./images/tokens/bowser.png");
+}
+.icon#cfalcon, .token.cfalcon {
+  background-image: url("./images/tokens/cfalcon.png");
+}
+.icon#cloud, .token.cloud {
+  background-image: url("./images/tokens/cloud.png");
+}
+.icon#dk, .token.dk {
+  background-image: url("./images/tokens/dk.png");
+}
+.icon#ink, .token.ink{
+  background-image: url("./images/tokens/ink.png");
+}
+.icon#kirby, .token.kirby {
+  background-image: url("./images/tokens/kirby.png");
+}
+.icon#link, .token.link {
+  background-image: url("./images/tokens/link.png");
+}
+.icon#luigi, .token.luigi {
+  background-image: url("./images/tokens/luigi.png");
+}
+.icon#meta, .token.meta {
+  background-image: url("./images/tokens/meta.png");
+}
+.icon#pac, .token.pac {
+  background-image: url("./images/tokens/pac.png");
+}
+.icon#peach, .token.peach {
+  background-image: url("./images/tokens/peach.png");
+}
+.icon#pika, .token.pika {
+  background-image: url("./images/tokens/pika.png");
+}
+.icon#sonic, .token.sonic {
+  background-image: url("./images/tokens/sonic.png");
+}
+.icon#toon, .token.toon {
+  background-image: url("./images/tokens/toon.png");
+}
+.icon#yoshi, .token.yoshi {
+  background-image: url("./images/tokens/yoshi.png");
+}
