@@ -349,7 +349,8 @@ function restartGame(startingPlayer) {
 function toggleSound() {
   music.muted = !music.muted;
   battleMusic.muted = !battleMusic.muted;
-  tokenSound.muted = !tokenSound.muted;
+  tokenSound1.muted = !tokenSound1.muted;
+  tokenSound2.muted = !tokenSound2.muted;
 }
 
 function pauseGame() {
