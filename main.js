@@ -89,8 +89,8 @@ function startGame() {
   p1Name.classList.remove("hidden");
   p2Name.classList.remove("hidden");
 
-  style.textContent = `.p1.token,.p1.icon{background-image: url(./images/tokens/kirby.png);}
-  .p2.token,.p2.icon{background-image: url(./images/tokens/kirby.png);}`
+  style.textContent = `.p1.token,.p1.icon{background-image: url(./images/tokens/${p1CharacterId}.png);}
+  .p2.token,.p2.icon{background-image: url(./images/tokens/${p2CharacterId}.png);}`
   for (let col = 0; col < gameBoardArray.length; col++) {
     for (let row = 0; row < gameBoardArray[col].length; row++) {
       availableGamePieces++;
