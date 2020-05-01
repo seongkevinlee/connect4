@@ -350,3 +350,10 @@ function timer() {
     }
   }, delay);
 }
+
+var p1CharacterId;
+var p2CharacterId;
+function highlightCharacter(currentPlayer, character) {
+  var charEle = document.getElementById(character);
+  charEle.classList.add(`highlight p${currentPlayer}`);
+}
