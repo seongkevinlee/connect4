@@ -1,7 +1,7 @@
 /*-------- Global Element Selectors --------*/
 // Game functionality
 var gameContainer = document.querySelector(".game-container");
-
+var docHead = document.querySelector('head')
 // Controls
 var toggleSoundEle = document.querySelector(".toggle-sound");
 var restartButton = document.querySelector(".win-button");
@@ -19,7 +19,7 @@ var p1WinPercent = document.getElementById("p1_win_percent");
 var p2WinPercent = document.getElementById("p2_win_percent");
 var totalGames = document.getElementById("games-played");
 var roundStats = document.getElementById("round");
-
+var style = document.getElementById('style');
 // models
 var startModal = document.querySelector(".start-modal");
 var winModal = document.querySelector('.win-modal')
@@ -81,6 +81,8 @@ function startGame() {
   p1Name.classList.remove("hidden");
   p2Name.classList.remove("hidden");
 
+  style.textContent = `.p1.token,.p1.icon{background-image: url(./images/tokens/kirby.png);}
+  .p2.token,.p2.icon{background-image: url(./images/tokens/kirby.png);}`
   for (let col = 0; col < gameBoardArray.length; col++) {
     for (let row = 0; row < gameBoardArray[col].length; row++) {
       availableGamePieces++;
@@ -314,6 +316,8 @@ function restartGame(startingPlayer) {
   resetGameBoard();
   currentPlayer = startingPlayer;
   gameBoardImage.classList.remove('hidden');
+  var style = document.querySelector('style')
+  style.textContent = " ";
 }
 
 function toggleSound() {
