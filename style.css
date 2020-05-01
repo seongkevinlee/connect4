@@ -15,20 +15,6 @@ body{
   background-repeat: none;
   cursor: url("./images/cursor.cur"), auto;
 }
-.row > div {
-  height: 100%;
-  width: 14%;
-  margin: 2px;
-  border-radius: 50%;
-  text-align: center;
-}
-
-label {
-  cursor: url("./images/cursor.cur"), auto;
-}
-
-
-
 
 .main-body{
   display:flex;
@@ -37,7 +23,6 @@ label {
   width:100%;
   margin: auto;
 }
-
 .game-container {
   display: flex;
   flex-wrap: wrap;
@@ -45,13 +30,21 @@ label {
   width: 658px;
   height: 503px;
 }
-
 .row {
   display: flex;
   height: 16%;
   width: 100%;
 }
-
+.row > div {
+  height: 100%;
+  width: 14%;
+  margin: 2px;
+  border-radius: 50%;
+  text-align: center;
+}
+label {
+  cursor: url("./images/cursor.cur"), auto;
+}
 .header {
   height: 10rem;
   width: 100%;
@@ -107,19 +100,12 @@ label {
   background-repeat: no-repeat;
   background-position: center;
 }
-
 .pause-game{
 background-image: url(images/pause.png);
 }
-/* .header > div{
-  flex-basis: 30%;
-  margin: 0 1.35%;
-} */
-
 .left, .right {
   width: 23%;
 }
-
 .footer {
   height: 80px;
   width: 1250px;
@@ -224,12 +210,9 @@ background-image: url(images/pause.png);
   width: 80px;
   height: 36px;
 }
-
-
 .info{
   margin: auto;
 }
-
 .icon {
   height: 120px;
   background-position: center;
@@ -238,38 +221,32 @@ background-image: url(images/pause.png);
   margin-top: 10px;
   margin-bottom: 15px;
 }
-
 .stats-and-info{
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
-
 .stats-icon{
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-evenly;
   align-items: flex-start;
 }
-
 .char{
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   height: 70%;
 }
-
 .name-icon{
   display: flex;
   flex-wrap: wrap;
 }
-
 .name {
   font-size: 2rem;
   text-align: center;
   margin-bottom: 15px;
 }
-
 .timer{
   background-color: rgb(255, 255, 255);
   border: rgb(0, 0, 0) 1px solid;

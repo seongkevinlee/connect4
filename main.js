@@ -331,9 +331,9 @@ function displayWin(winner) {
   if (winner === 0) {
     winModalTxt.textContent = "CONGRATULATIONS! THIS WAS AN EPIC BATTLE THAT RESULTED IN A TIE!";
   } else if (winner === 1){
-    winModalTxt.textContent = `${player1Input.value || player1Input.placeholder}`.toUpperCase() + ' WON!';
+    winModalTxt.textContent = `${player1Input.value || player1Input.placeholder} WON!`.toUpperCase();
   } else if (winner === 2){
-    winModalTxt.textContent = `${player2Input.value || player2Input.placeholder}`.toUpperCase() + ' WON!';
+    winModalTxt.textContent = `${player2Input.value || player2Input.placeholder} WON!`.toUpperCase();
   }
   gameContainer.className = "game-container hidden";
 }
