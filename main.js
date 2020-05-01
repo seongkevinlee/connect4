@@ -329,11 +329,11 @@ function displayWin(winner) {
   gameBoardImage.classList.add('hidden');
   winModal.classList.remove('hidden');
   if (winner === 0) {
-    winModalTxt.textContent = "Congratulations, this was an epic battle that resulted in a tie!";
+    winModalTxt.textContent = "CONGRATULATIONS! THIS WAS AN EPIC BATTLE THAT RESULTED IN A TIE!";
   } else if (winner === 1){
-    winModalTxt.textContent = `Player ${player1Input.value || player1Input.placeholder} won!`;
+    winModalTxt.textContent = `${player1Input.value || player1Input.placeholder}`.toUpperCase() + ' WON!';
   } else if (winner === 2){
-    winModalTxt.textContent = `Player ${player2Input.value || player2Input.placeholder} won!`;
+    winModalTxt.textContent = `${player2Input.value || player2Input.placeholder}`.toUpperCase() + ' WON!';
   }
   gameContainer.className = "game-container hidden";
 }
@@ -400,7 +400,7 @@ function selectCharacter(event) {
     return
   }
   highlightCharacter(currentPlayer, event.target.id);
-  currentPlayer = currentPlayer === 1 ? 2 : 1;
+  currentPlayer = currentPlayer === 1 ? 2 : 1; //there is a bug with this section. it selects player 2s character as player 1 because currentplayer starts off as 1 already which then sets currentPlayer as 2 which then makes the first selection for player 2 instead.
   if(currentPlayer === 1) {
     p1CharacterId = event.target.id;
   } else if(currentPlayer === 2) {

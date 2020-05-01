@@ -27,11 +27,58 @@ label {
   cursor: url("./images/cursor.cur"), auto;
 }
 
+
+
+
+.main-body{
+  display:flex;
+  flex-Wrap: wrap;
+  justify-content: space-between;
+  width:100%;
+  margin: auto;
+}
+
+.game-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 658px;
+  height: 503px;
+}
+
+.row {
+  display: flex;
+  height: 16%;
+  width: 100%;
+}
+
+.header {
+  height: 10rem;
+  width: 100%;
+  display:flex;
+  justify-content: space-around;
+  margin-bottom: 1px;
+}
+.game-stats {
+  font-size: 1.5rem;
+  text-align: left;
+}
+.game-info {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.title {
+  width: 28%;
+}
 .control-panel{
   display: flex;
   justify-content: space-around;
   flex-wrap: nowrap;
   align-items: center;
+  width: 20%;
 }
 .control-panel > div{
   width: 3vmax;
@@ -64,56 +111,19 @@ label {
 .pause-game{
 background-image: url(images/pause.png);
 }
-
-.main-body{
-  display:flex;
-  flex-Wrap: wrap;
-  justify-content: space-between;
-  width:100%;
-  margin: auto;
-}
-
-.game-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 658px;
-  height: 503px;
-}
-
-.row {
-  display: flex;
-  height: 16%;
-  width: 100%;
-}
-
-.header {
-  height: 10rem;
-  width: 100%;
-  display:flex;
-  justify-content: space-around;
-  margin-bottom: 1px;
-}
-
-.header > div{
+/* .header > div{
   flex-basis: 30%;
-  height: 76px;
   margin: 0 1.35%;
-}
+} */
 
 .left, .right {
   width: 23%;
-  height: 502px;
-  border: 1px solid;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.4), rgb(255, 255, 255, 0.6))
 }
 
 .footer {
   height: 80px;
   width: 1250px;
   text-align: center;
-  border: 1px solid;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.4), rgb(255, 255, 255, 0.6));
   display: flex;
   justify-content: center;
 }
@@ -162,6 +172,14 @@ background-image: url(images/pause.png);
   width: 200px;
   height: 35px;
 }
+.player1-name {
+  border-color: rgba(255, 0, 0);
+  border-width: 3px;
+}
+.player2-name {
+  border-color: rgba(0, 255, 21);
+  border-width: 3px;
+}
 .start-button {
   font-family: 'Marvel', sans-serif;
   background-color: white;
@@ -198,32 +216,15 @@ background-image: url(images/pause.png);
   background-repeat: no-repeat;
 }
 
-.title {
-  width: 28%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 4rem;
-}
+
 .stats{
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   margin: auto;
   text-align: center;
   width: 80px;
   height: 36px;
 }
-.game-stats {
-  font-size: 1.5rem;
-  margin: auto;
-  text-align: left;
-}
 
-.game-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 
 .info{
   margin: auto;
@@ -264,7 +265,7 @@ background-image: url(images/pause.png);
 }
 
 .name {
-  font-size: 1.3rem;
+  font-size: 2rem;
   text-align: center;
   margin-bottom: 15px;
 }
@@ -274,6 +275,7 @@ background-image: url(images/pause.png);
   border: rgb(0, 0, 0) 1px solid;
   border-radius: 7px;
   margin: auto;
+  width: 3%;
 }
 
 .win-modal{
@@ -355,10 +357,16 @@ input{
 }
 
 .highlight.p1 {
-  box-shadow: 5px 10px 18px red;
+  border-color: red;
+  box-shadow: 0px 0px 15px red;
+  transition: border-width .1s linear;
+  border-width: 3px;
 }
 .highlight.p2 {
-  box-shadow: 5px 10px 18px yellow;
+  border-color: rgb(0, 255, 13);
+  box-shadow: 0px 0px 15px rgb(0, 255, 13);
+  transition: border-width 0.1s linear;
+  border-width: 3px;
 }
 
 .hidden {
