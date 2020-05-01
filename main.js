@@ -98,10 +98,10 @@ function startGame() {
   p1Name.classList.remove("hidden");
   p2Name.classList.remove("hidden");
 
-  p1CharImgEle.setAttribute("id", p1CharacterId);
-  p2CharImgEle.setAttribute("id", p2CharacterId);
-  p1GamePieceEle.setAttribute("id", p1CharacterId);
-  p2GamePieceEle.setAttribute("id", p2CharacterId);
+  p1CharImgEle.setAttribute("id", p1CharacterId || "bowser");
+  p2CharImgEle.setAttribute("id", p2CharacterId || "cfalcon");
+  p1GamePieceEle.setAttribute("id", p1CharacterId || "bowser");
+  p2GamePieceEle.setAttribute("id", p2CharacterId || "cfalcon");
 
   for (let col = 0; col < gameBoardArray.length; col++) {
     for (let row = 0; row < gameBoardArray[col].length; row++) {
@@ -399,20 +399,20 @@ function selectCharacter(event) {
   if(!event || !event.target.classList.contains('charbox')) {
     return
   }
-  highlightCharacter(currentPlayer, event.target.id);
-  currentPlayer = currentPlayer === 1 ? 2 : 1; //there is a bug with this section. it selects player 2s character as player 1 because currentplayer starts off as 1 already which then sets currentPlayer as 2 which then makes the first selection for player 2 instead.
+  highlight(currentPlayer, event.target.id);
   if(currentPlayer === 1) {
     p1CharacterId = event.target.id;
   } else if(currentPlayer === 2) {
     p2CharacterId = event.target.id;
   }
+  currentPlayer = currentPlayer === 1 ? 2 : 1;
 }
 
-function highlightCharacter(currentPlayer, character) {
-  if (p1CharacterId && currentPlayer === 2) {
+function highlight(currentPlayer, character) {
+  if (p1CharacterId && currentPlayer === 1) {
     let p1PreviousEle = document.getElementById(p1CharacterId);
     p1PreviousEle.classList.remove(`highlight`, `p${currentPlayer}`)
-  } else if(p2CharacterId && currentPlayer === 1) {
+  } else if(p2CharacterId && currentPlayer === 2) {
     let p2PreviousEle = document.getElementById(p2CharacterId);
     p2PreviousEle.classList.remove(`highlight`, `p${currentPlayer}`)
   }
@@ -421,5 +421,5 @@ function highlightCharacter(currentPlayer, character) {
 }
 
 function menuMusicVolume(){
-  music.volume = 0.2;
+  music.volume = 0;
 }
