@@ -88,10 +88,6 @@ background-image: url(images/pause.png);
 }
 
 .header {
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.3), rgb(255, 255, 255, 0.3)), url("./images/bannerbg.png");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
   height: 10rem;
   width: 100%;
   display:flex;
