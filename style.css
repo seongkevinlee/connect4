@@ -82,11 +82,14 @@ background-image: url(images/pause.png);
 }
 
 .header {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.3), rgb(255, 255, 255, 0.3)), url("./images/bannerbg.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   height: 10rem;
   width: 100%;
   display:flex;
   justify-content: space-around;
-  border: 1px solid;
   margin-bottom: 1px;
 }
 
@@ -97,9 +100,7 @@ background-image: url(images/pause.png);
 }
 
 .left, .right {
-  width: 116px;
-  height: 502px;
-  border: 1px solid;
+  width: 23%;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.4), rgb(255, 255, 255, 0.6))
 }
 
@@ -240,6 +241,7 @@ background-image: url(images/pause.png);
 
 
 .title {
+  width: 28%;
   display: flex;
   justify-content: center;
   align-items: center;
