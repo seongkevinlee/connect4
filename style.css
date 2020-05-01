@@ -36,8 +36,11 @@ label {
 .control-panel > div{
   width: 3vmax;
   height: 3vmax;
-  border: solid 1px;
   border-radius: 7px;
+}
+.control-panel button{
+  background-color: transparent;
+  border-radius: 50%;
 }
 .toggle-sound,
 .reset-game,
@@ -53,6 +56,9 @@ label {
 }
 .reset-game{
   background-image: url(images/restart.png);
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .pause-game{
@@ -86,7 +92,6 @@ background-image: url(images/pause.png);
   width: 100%;
   display:flex;
   justify-content: space-around;
-  border: 1px solid;
   margin-bottom: 1px;
 }
 
@@ -194,6 +199,7 @@ background-image: url(images/pause.png);
 }
 
 .title {
+  width: 28%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -271,9 +277,9 @@ background-image: url(images/pause.png);
 }
 
 .win-modal{
-  background-image: url(./images/winbg.jpg);
+  background-image: url(./images/winbg.png);
   background-color: white;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: fixed;
