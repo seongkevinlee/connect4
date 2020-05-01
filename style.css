@@ -220,6 +220,7 @@ background-image: url(images/pause.png);
   background-repeat: no-repeat;
   margin-top: 10px;
   margin-bottom: 15px;
+  border-radius: 50%;
 }
 .stats-and-info{
   display: flex;
