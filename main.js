@@ -383,9 +383,34 @@ function timer() {
   }, delay);
 }
 
+var characterSelect = document.querySelector('.character-select');
+characterSelect.addEventListener('click', selectCharacter);
 var p1CharacterId;
 var p2CharacterId;
+
+
+function selectCharacter(event) {
+  if(!event || !event.target.classList.contains('charbox')) {
+    return
+  }
+  highlightCharacter(currentPlayer, event.target.id);
+  currentPlayer = currentPlayer === 1 ? 2 : 1;
+  if(currentPlayer === 1) {
+    p1CharacterId = event.target.id;
+  } else if(currentPlayer === 2) {
+    p2CharacterId = event.target.id;
+  }
+}
+
+
 function highlightCharacter(currentPlayer, character) {
-  var charEle = document.getElementById(character);
-  charEle.classList.add(`highlight p${currentPlayer}`);
+  if (p1CharacterId && currentPlayer === 2) {
+    let p1PreviousEle = document.getElementById(p1CharacterId);
+    p1PreviousEle.classList.remove(`highlight`, `p${currentPlayer}`)
+  } else if(p2CharacterId && currentPlayer === 1) {
+    let p2PreviousEle = document.getElementById(p2CharacterId);
+    p2PreviousEle.classList.remove(`highlight`, `p${currentPlayer}`)
+  }
+  let charEle = document.getElementById(character);
+  charEle.classList.add(`highlight`, `p${currentPlayer}`);
 }
