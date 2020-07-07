@@ -1,7 +1,3 @@
-# hackathon-1
-
-For this hackathon, you and your team will be collaborating to build a Connect Four game. A description of the basic game rules can be found [here](https://en.wikipedia.org/wiki/Connect_Four#Gameplay).
-
 ## Requirements
 
 - The game must support at least two players.
